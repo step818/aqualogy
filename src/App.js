@@ -4,7 +4,9 @@ import { Switch, Route } from 'react-router-dom';
 import './App.css';
 import Home from './containers/Home/Home';
 import Forum from './containers/Forum/Forum';
-import Login from
+import Login from './containers/Login/Login';
+import Blog from './containers/Blog/Blog';
+import Book from './containers/Book/Book';
 
 class App extends Component{
 
