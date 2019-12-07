@@ -9,7 +9,7 @@ import Login from './containers/Login/Login';
 import Blog from './containers/Blog/Blog';
 import Book from './containers/Book/Book';
 import Layout from './hoc/Layout/Layout';
-
+import Admin from './containers/Admin/Admin';
 
 class App extends Component{
 
@@ -22,6 +22,7 @@ class App extends Component{
             <Route path="/blog" component={Blog} />
             <Route path="/forum" component={Forum} />
             <Route path="/book" compnent={Book} />
+            <Route path="/admin" component={Admin} />
             <Route exact path="/" component={Home} />
           </Switch>
         </Layout>
