@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import { Switch, Route } from 'react-router-dom';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './App.css';
 import Home from './containers/Home/Home';
@@ -8,6 +9,7 @@ import Login from './containers/Login/Login';
 import Blog from './containers/Blog/Blog';
 import Book from './containers/Book/Book';
 import Layout from './hoc/Layout/Layout';
+
 
 class App extends Component{
 

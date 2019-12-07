@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+// import { Button } from 'react-bootstrap';
 
 class Home extends Component {
 
@@ -6,6 +8,8 @@ class Home extends Component {
     return(
       <div>
         <p>This is the home page!</p>
+        <Link to="/admin">Admin</Link>
+        {/* <Button bssStyle="primary">Boobie</Button> */}
       </div>
     );
   }
