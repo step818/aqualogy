@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
-// import { Button } from 'react-bootstrap';
+import { Route, Link } from 'react-router-dom';
+import Blog from '../Blog/Blog';
 import bgPicture from '../../assets/images/homepage.jpeg';
 
 class Home extends Component {
@@ -9,8 +9,8 @@ class Home extends Component {
     return(
       <div>
         <p>This is the home page!</p>
+        <Blog/>
         <Link to="/admin">Admin</Link>
-        {/* <Button bssStyle="primary">Boobie</Button> */}
 
       </div>
     );
