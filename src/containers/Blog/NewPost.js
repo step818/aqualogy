@@ -1,37 +1,44 @@
 import React, { Component } from 'react';
-import firebase from '../../firestore';
+import firebase from '../../Firebase';
 import { Button } from 'react-bootstrap';
 
 class NewPost extends Component {
-  state = {
+  constructor() {
+    super();
+    this.ref = firebase.firestore().collection('posts');
+    this.state = {
       title: "",
       post: ""
-    }
+    };
+  }
+  
   
 
-  updateInput = e => {
-    this.setState({
-      [e.target.value]: e.target.value
-    });
+  updateInput = (e) => {
+    const state = this.state;
+    state[e.target.name] = e.target.value;
+    this.setState(state);
   }
 
-  postBlog = e => {
+  postBlog = (e) => {
     e.preventDefault();
-    const db = firebase.firestore();
-    db.settings({
-      timestampsInSnapshots: true
-    });
-    const userRef = db.collection("posts").add({
-      title: this.state.title,
-      post: this.state.post
-    });
-    this.setState({
-      title: "",
-      post: ""
+    const { title, post } = this.state;
+    this.ref.add({
+      title,
+      post
+    }).then((docRef) => {
+      this.setState({
+        title:'',
+        post:''
+      });
+      this.props.history.push("/")
+    }).catch((error) => {
+      console.error("Error adding document: ", error);
     });
   }
 
   render() {
+    const { title, post } = this.state;
     return(
       <form onSubmit={this.postBlog}>
         <input
@@ -39,14 +46,14 @@ class NewPost extends Component {
           name="title"
           placeholder="Title"
           onChange={this.updateInput}
-          value={this.state.title}
+          value={title}
         />
         <textarea
           type="text"
           name="post"
           placeholder="What're ya thinking?"
           onChange={this.updateInput}
-          value={this.state.post}
+          value={post}
         />
         <Button type="submit">Submit</Button>
       </form>

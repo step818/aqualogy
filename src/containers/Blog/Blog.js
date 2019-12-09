@@ -1,13 +1,35 @@
 import React, { Component } from 'react';
 import Post from '../../components/Post/Post';
+import firebase from '../../Firebase';
 
 class Blog extends Component {
-  state={
-    posts: []
+  constructor(props) {
+    super(props);
+    this.ref = firebase.firestore().collection('posts');
+    this.unsubscribe = null;
+    this.state = {
+      posts: []
+    };
   }
 
-  postSelectedHandler = (id) => {
-    this.props.history.push({pathname: '/posts/' + id});
+  onPostsUpdate = (querySnapshot) => {
+    const posts = [];
+    querySnapshot.forEach((doc) => {
+      const { title, post } = doc.data();
+      posts.push({
+        key: doc.id,
+        doc,
+        title,
+        post
+      });
+    });
+    this.setState({
+      posts
+    });
+  }
+
+  componentDidMount() {
+    this.unsubscribe = this.ref.onSnapshot(this.onPostsUpdate);
   }
 
   render() {
@@ -19,7 +41,7 @@ class Blog extends Component {
         snippet={post.snippet}
         date={post.date}
         timeToRead={post.timeToRead} 
-        clicked={() => this.postSelectedHandler(post.id)} />
+        />
     ))
     return(
       <div>
