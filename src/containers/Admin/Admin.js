@@ -4,11 +4,16 @@ import classes from './Admin.module.css';
 
 class Admin extends Component {
 
+  checkAdmin = (e) => {
+    e.preventDefault();
+    // do some authenticating with firebase now
+  }
+
   render() {
     return(
       <div className={classes.Admin}>
         <Container>
-          <Form>
+          <Form onSubmit={this.checkAdmin}>
             <Row>
               <Col>
                 <Form.Group controlId="formBasicEmail">

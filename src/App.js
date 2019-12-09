@@ -11,6 +11,7 @@ import Book from './containers/Book/Book';
 import Layout from './hoc/Layout/Layout';
 import Admin from './containers/Admin/Admin';
 import NewPost from './containers/Blog/NewPost';
+import AdminOnly from './containers/Admin/AdminOnly';
 
 class App extends Component{
 
@@ -19,6 +20,7 @@ class App extends Component{
       <div className="App">
         <Layout>
           <Switch>
+            <Route path="/adminOnly" component={AdminOnly} />
             <Route path="/newPost" component={NewPost} />
             <Route path="/login" component={Login} />
             <Route path="/blog" component={Blog} />

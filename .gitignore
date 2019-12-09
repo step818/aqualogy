@@ -2,6 +2,7 @@
 
 #firebase
 firestore.js
+Firebase.js
 
 # dependencies
 /node_modules

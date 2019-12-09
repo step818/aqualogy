@@ -45,7 +45,7 @@ class Blog extends Component {
     ))
     return(
       <div>
-        hi
+        Blogs below
         {posts}
       </div>
     );
