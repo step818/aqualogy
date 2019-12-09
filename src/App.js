@@ -10,6 +10,7 @@ import Blog from './containers/Blog/Blog';
 import Book from './containers/Book/Book';
 import Layout from './hoc/Layout/Layout';
 import Admin from './containers/Admin/Admin';
+import NewPost from './containers/Blog/NewPost';
 
 class App extends Component{
 
@@ -18,6 +19,7 @@ class App extends Component{
       <div className="App">
         <Layout>
           <Switch>
+            <Route path="/newPost" component={NewPost} />
             <Route path="/login" component={Login} />
             <Route path="/blog" component={Blog} />
             <Route path="/forum" component={Forum} />
