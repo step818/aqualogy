@@ -1,15 +1,23 @@
-import React, { Component } from 'react';
+import React, { useContext } from 'react';
+import { Route, Redirect } from 'react-router-dom';
+import { AuthContext } from '../../Auth';
 import NewPost from '../Blog/NewPost';
 
-class AdminOnly extends Component {
+const AdminOnly = ({ component: RouteComponent, ...rest }) => {
+  const {currentUser} = useContext(AuthContext);
 
-  render() {
-    return(
-      <div>
-        <NewPost/>
-      </div>
-    );
-  }
-}
+  return (
+    <Route
+      {...rest}
+      render={routeProps =>
+        !!currentUser ? (
+          <RouteComponent {...routeProps} />
+        ) : (
+          <Redirect to={"/admin"} />
+        )
+      }
+    />
+  );
+};
 
 export default AdminOnly;

@@ -3,6 +3,7 @@
 #firebase
 firestore.js
 Firebase.js
+.env
 
 # dependencies
 /node_modules
