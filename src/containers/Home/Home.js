@@ -11,11 +11,13 @@ class Home extends Component {
     
     return(
       <div>
+        <div class="jumbotron">
+          <h1>Aqualogy</h1>
+        </div>
         <p>This is the home page!</p>
         <NewPost/>
         <Blog/>
         <Link to="/admin">Admin</Link>
-
       </div>
     );
   }

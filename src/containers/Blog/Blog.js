@@ -45,7 +45,6 @@ class Blog extends Component {
     ))
     return(
       <div>
-        Blogs below
         {posts}
       </div>
     );
