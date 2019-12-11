@@ -21,6 +21,10 @@ const navigationItems = () => {
   return(
   <ul className={classes.NavigationItems}>
     <NavigationItem link="/" exact>Home</NavigationItem>
+    <NavigationItem link="/blog">Blog</NavigationItem>
+    <NavigationItem link="/book">Contact</NavigationItem>
+    <NavigationItem link="/about">About Me</NavigationItem>
+    <NavigationItem link="/forum">Forum</NavigationItem>
     <NavigationItem link="/login">Login</NavigationItem>
     <NavigationItem link="/signup">Signup</NavigationItem>
     {loginStatus}
