@@ -5,7 +5,7 @@ import { AuthContext } from '../../Auth';
 import { Button } from 'react-bootstrap';
 
 const Login = ({ history }) => {
-  
+
   const handleLogin = useCallback(
     async event => {
       event.preventDefault();
@@ -15,6 +15,7 @@ const Login = ({ history }) => {
           .auth()
           .signInWithEmailAndPassword(email.value, password.value);
         history.push("/");
+        console.log("User logged in!");
       } catch (error) {
         alert(error);
       }

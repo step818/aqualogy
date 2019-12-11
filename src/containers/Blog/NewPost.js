@@ -40,23 +40,27 @@ class NewPost extends Component {
   render() {
     const { title, post } = this.state;
     return(
-      <form onSubmit={this.postBlog}>
-        <input
-          type="text"
-          name="title"
-          placeholder="Title"
-          onChange={this.updateInput}
-          value={title}
-        />
-        <textarea
-          type="text"
-          name="post"
-          placeholder="What're ya thinking?"
-          onChange={this.updateInput}
-          value={post}
-        />
-        <Button type="submit">Submit</Button>
-      </form>
+      <div>
+        <h2>Create New Post</h2>
+        <form onSubmit={this.postBlog}>
+          
+          <input
+            type="text"
+            name="title"
+            placeholder="Title"
+            onChange={this.updateInput}
+            value={title}
+          />
+          <textarea
+            type="text"
+            name="post"
+            placeholder="What're ya thinking?"
+            onChange={this.updateInput}
+            value={post}
+          />
+          <Button type="submit">Submit</Button>
+        </form>
+      </div>
     );
   }
 }

@@ -5,6 +5,7 @@ import firebase from '../../../Firebase';
 import classes from './NavigationItems.module.css';
 import { AuthContext } from '../../../Auth';
 import { withRouter } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
 
 const navigationItems = () => {
   // let loginStatus =  ? <NavigationItem onClick={() => firebase.auth().signOut()}>Logout</NavigationItem> : <NavigationItem link="/login">Login/Signup</NavigationItem>
@@ -12,7 +13,9 @@ const navigationItems = () => {
   const {currentUser} = useContext(AuthContext);
 
   if (currentUser) {
-    loginStatus = <button onClick={() => firebase.auth().signOut()}>Sign Out</button>
+    loginStatus = <div>
+                    <Button variant="warning" onClick={() => firebase.auth().signOut()}>Sign Out</Button>
+                  </div>
   }
 
   return(
