@@ -1,11 +1,11 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, Component } from 'react';
 import { Button } from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
 import firebase from '../../Firebase';
 
-const Signup = ({ history }) => {
+class Signup extends Component {
 
-  const handleSignup = useCallback(async event => {
+  handleSignup = (history) => useCallback(async event => {
     event.preventDefault();
     const { email, password } = event.target.elements;
     try {
@@ -18,10 +18,11 @@ const Signup = ({ history }) => {
     }
   }, [history]);
 
+  render() {
     return(
       <div>
         <h1>Sign up</h1>
-        <form onSubmit={handleSignup}>
+        <form onSubmit={this.handleSignup}>
           <label>
             Email
             <input name="email" type="email" placeholder="Your Email" />
@@ -35,5 +36,6 @@ const Signup = ({ history }) => {
       </div>
     );
   }
+}
 
 export default withRouter(Signup);

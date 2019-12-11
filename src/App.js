@@ -15,6 +15,7 @@ import NewPost from './containers/Blog/NewPost';
 import AdminOnly from './containers/AdminLogin/AdminOnly';
 import { AuthProvider } from './Auth';
 import PrivateRoute from './containers/AdminLogin/AdminOnly';
+import SignupInfo from './containers/Login/SignupInfo';
 
 class App extends Component{
 
@@ -28,6 +29,7 @@ class App extends Component{
               <Route path="/newPost" component={NewPost} />
               <Route path="/login" component={Login} />
               <Route path="/signup" component={Signup} />
+              <Route path="/signUpInfo" component={SignupInfo} />
               <Route path="/blog" component={Blog} />
               <Route path="/forum" component={Forum} />
               <Route path="/book" compnent={Book} />
