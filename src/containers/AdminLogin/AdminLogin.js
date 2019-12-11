@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Form, Button, Container, Row, Col } from 'react-bootstrap';
 import classes from './Admin.module.css';
 
-class Admin extends Component {
+class AdminLogin extends Component {
 
   checkAdmin = (e) => {
     e.preventDefault();
@@ -43,4 +43,4 @@ class Admin extends Component {
   }
 }
 
-export default Admin;
+export default AdminLogin;

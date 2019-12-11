@@ -13,7 +13,7 @@ const AdminOnly = ({ component: RouteComponent, ...rest }) => {
         !!currentUser ? (
           <RouteComponent {...routeProps} />
         ) : (
-          <Redirect to={"/admin"} />
+          <Redirect to={"/adminLogin"} />
         )
       }
     />
