@@ -7,6 +7,7 @@ class Signup extends Component {
 
   handleSignup = (history) => useCallback(async event => {
     event.preventDefault();
+    console.log("something!");
     const { email, password } = event.target.elements;
     try {
       await firebase
