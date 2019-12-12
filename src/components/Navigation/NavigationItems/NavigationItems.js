@@ -8,13 +8,17 @@ import { withRouter } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 
 const navigationItems = () => {
-  // let loginStatus =  ? <NavigationItem onClick={() => firebase.auth().signOut()}>Logout</NavigationItem> : <NavigationItem link="/login">Login/Signup</NavigationItem>
   let loginStatus = null;
   const {currentUser} = useContext(AuthContext);
 
   if (currentUser) {
+    console.log("user logged in - NavItems");
     loginStatus = <div>
-                    <Button variant="warning" onClick={() => firebase.auth().signOut()}>Sign Out</Button>
+                    <Button variant="warning" onClick={() => firebase.auth().signOut()}>Log Out</Button>
+                  </div>
+  } else {
+    loginStatus = <div>
+                    <NavigationItem link="/login">Login</NavigationItem>
                   </div>
   }
 
@@ -25,7 +29,6 @@ const navigationItems = () => {
     <NavigationItem link="/book">Contact</NavigationItem>
     <NavigationItem link="/about">About Me</NavigationItem>
     <NavigationItem link="/forum">Forum</NavigationItem>
-    <NavigationItem link="/login">Login</NavigationItem>
     <NavigationItem link="/signup">Signup</NavigationItem>
     {loginStatus}
   </ul>

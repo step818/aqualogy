@@ -2,6 +2,7 @@ import React, { useCallback, useContext } from 'react';
 import { withRouter, Redirect } from "react-router-dom";
 import firebase from '../../Firebase';
 import { AuthContext } from '../../Auth';
+
 import { Button } from 'react-bootstrap';
 
 const Login = ({ history }) => {
@@ -19,14 +20,13 @@ const Login = ({ history }) => {
       } catch (error) {
         alert(error);
       }
-    },
-    [history]
-  );
+    }, [history]);
 
   const { currentUser } = useContext(AuthContext);
 
   if(currentUser) {
-    return <Redirect to="/" />;
+    console.log("logged in - Login");
+    return <Redirect to="/forum" />;
   }
 
   return (

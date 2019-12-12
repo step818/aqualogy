@@ -10,12 +10,11 @@ import Login from './containers/Login/Login';
 import Signup from './containers/Login/Signup';
 import Blog from './containers/Blog/Blog';
 import Book from './containers/Book/Book';
+import About from './containers/About/About';
 import Layout from './hoc/Layout/Layout';
 import AdminLogin from './containers/AdminLogin/AdminLogin';
 import NewPost from './containers/Blog/NewPost';
-import AdminOnly from './containers/AdminLogin/AdminOnly';
 import { AuthProvider } from './Auth';
-import PrivateRoute from './containers/AdminLogin/AdminOnly';
 import UserRoute from './containers/Login/UserRoute';
 
 class App extends Component{
@@ -26,13 +25,13 @@ class App extends Component{
         <div className="App">
           <Layout>
             <Switch>
-              <Route path="/adminOnly" component={AdminOnly} />
-              <UserRoute path="/newPost" component={NewPost} />
+              <UserRoute path="/newpost" component={NewPost} />
               <Route path="/login" component={Login} />
               <Route path="/signup" component={Signup} />
               <Route path="/blog" component={Blog} />
               <Route path="/forum" component={Forum} />
-              <Route path="/book" compnent={Book} />
+              <Route path="/book" component={Book} />
+              <Route path="/about" component={About} />
               <Route path="/adminLogin" component={AdminLogin} />
               <Route exact path="/" component={Home} />
               <Route component={NotFound} />

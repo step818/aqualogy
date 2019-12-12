@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Blog from '../Blog/Blog';
-// Temporarily add NewPost to home for testing purposes
-import NewPost from '../Blog/NewPost';
 
 class Home extends Component {
 
@@ -10,7 +8,7 @@ class Home extends Component {
     
     return(
       <div>
-        <div class="jumbotron">
+        <div className="jumbotron">
           <h1>Aqualogy</h1>
         </div>
         <p>This is the home page!</p>
