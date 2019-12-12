@@ -19,6 +19,14 @@ import UserRoute from './containers/Login/UserRoute';
 
 class App extends Component{
 
+  state = {
+    authenticated: false
+  }
+
+  isLoggedIn = () => {
+    this.setState({authenticated: true});
+    console.log(this.state);
+  }
   render() {
     return (
       <AuthProvider>
@@ -26,7 +34,7 @@ class App extends Component{
           <Layout>
             <Switch>
               <UserRoute path="/newpost" component={NewPost} />
-              <Route path="/login" component={Login} />
+              <Route path="/login" component={Login} isLoggedIn={this.isLoggedIn}/>
               <Route path="/signup" component={Signup} />
               <Route path="/blog" component={Blog} />
               <Route path="/forum" component={Forum} />
