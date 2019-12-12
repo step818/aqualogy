@@ -3,6 +3,7 @@ import { Switch, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './App.css';
+import NotFound from './components/404NotFound/404NotFound';
 import Home from './containers/Home/Home';
 import Forum from './containers/Forum/Forum';
 import Login from './containers/Login/Login';
@@ -15,17 +16,18 @@ import NewPost from './containers/Blog/NewPost';
 import AdminOnly from './containers/AdminLogin/AdminOnly';
 import { AuthProvider } from './Auth';
 import PrivateRoute from './containers/AdminLogin/AdminOnly';
+import UserRoute from './containers/Login/UserRoute';
 
 class App extends Component{
 
   render() {
     return (
-      <div className="App">
-        <AuthProvider>
+      <AuthProvider>
+        <div className="App">
           <Layout>
             <Switch>
-              <PrivateRoute path="/adminOnly" component={AdminOnly} />
-              <Route path="/newPost" component={NewPost} />
+              <Route path="/adminOnly" component={AdminOnly} />
+              <UserRoute path="/newPost" component={NewPost} />
               <Route path="/login" component={Login} />
               <Route path="/signup" component={Signup} />
               <Route path="/blog" component={Blog} />
@@ -33,10 +35,11 @@ class App extends Component{
               <Route path="/book" compnent={Book} />
               <Route path="/adminLogin" component={AdminLogin} />
               <Route exact path="/" component={Home} />
+              <Route component={NotFound} />
             </Switch>
           </Layout>
-        </AuthProvider>
-      </div>
+        </div>
+      </AuthProvider>
     );
   }
 }

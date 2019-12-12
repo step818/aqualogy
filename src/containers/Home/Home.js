@@ -14,9 +14,6 @@ class Home extends Component {
           <h1>Aqualogy</h1>
         </div>
         <p>This is the home page!</p>
-        <NewPost/>
-        
-        
         <Blog/>
         <Link to="/adminLogin">Admin</Link>
       </div>
