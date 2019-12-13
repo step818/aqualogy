@@ -9,6 +9,7 @@ import Forum from './containers/Forum/Forum';
 import Login from './containers/Login/Login';
 import Signup from './containers/Login/Signup';
 import Blog from './containers/Blog/Blog';
+import BlogDetails from './containers/Blog/BlogDetails';
 import Book from './containers/Book/Book';
 import About from './containers/About/About';
 import Layout from './hoc/Layout/Layout';
@@ -19,23 +20,17 @@ import UserRoute from './containers/Login/UserRoute';
 
 class App extends Component{
 
-  state = {
-    authenticated: false
-  }
 
-  isLoggedIn = () => {
-    this.setState({authenticated: true});
-    console.log(this.state);
-  }
   render() {
     return (
-      <AuthProvider>
+      
         <div className="App">
           <Layout>
             <Switch>
-              <UserRoute path="/newpost" component={NewPost} />
-              <Route path="/login" component={Login} isLoggedIn={this.isLoggedIn}/>
+              <Route path="/newpost" component={NewPost} />
+              <Route path="/login" component={Login} />
               <Route path="/signup" component={Signup} />
+              <Route path="/blog/:id" component={BlogDetails} />
               <Route path="/blog" component={Blog} />
               <Route path="/forum" component={Forum} />
               <Route path="/book" component={Book} />
@@ -46,7 +41,7 @@ class App extends Component{
             </Switch>
           </Layout>
         </div>
-      </AuthProvider>
+    
     );
   }
 }
