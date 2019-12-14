@@ -1,7 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { useContext } from 'react';
 import NavigationItem from './NavigationItem/NavigationItem';
-import firebase from '../../../Firebase';
 import classes from './NavigationItems.module.css';
 import { AuthContext } from '../../../Auth';
 import { withRouter } from 'react-router-dom';

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import './App.css';
@@ -15,16 +15,14 @@ import About from './containers/About/About';
 import Layout from './hoc/Layout/Layout';
 import AdminLogin from './containers/AdminLogin/AdminLogin';
 import NewPost from './containers/Blog/NewPost';
-import { AuthProvider } from './Auth';
-import UserRoute from './containers/Login/UserRoute';
 
 class App extends Component{
 
 
   render() {
     return (
-      
-        <div className="App">
+      <BrowserRouter>
+          <div className="App">
           <Layout>
             <Switch>
               <Route path="/newpost" component={NewPost} />
@@ -41,7 +39,7 @@ class App extends Component{
             </Switch>
           </Layout>
         </div>
-    
+      </BrowserRouter>
     );
   }
 }

@@ -3,11 +3,14 @@ import { Link } from 'react-router-dom';
 import Blog from '../Blog/Blog';
 import BlogList from '../Blog/BlogList';
 import Notifications from './Notifications';
+import { connect } from 'react-redux';
 
 class Home extends Component {
 
   render () {
-    
+    // console.log(this.props);
+    const { blogs } = this.props;
+
     return(
       <div>
         <div className="jumbotron">
@@ -16,7 +19,7 @@ class Home extends Component {
         <div className="dashboard container">
           <div className="row">
             <div className="col s12 m6">
-              <BlogList/>
+              <BlogList blogs={blogs}/>
             </div>
             <div className="col s12 m5 offset-m1">
               <Notifications />
@@ -29,4 +32,10 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = (state) => {
+  return {
+    blogs: state.blog.blogs
+  }
+}
+
+export default connect(mapStateToProps)(Home);

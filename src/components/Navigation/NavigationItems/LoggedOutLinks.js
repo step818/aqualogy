@@ -1,9 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import React, { useContext } from 'react';
+import React from 'react';
 import NavigationItem from './NavigationItem/NavigationItem';
-import firebase from '../../../Firebase';
 import classes from './NavigationItems.module.css';
-import { AuthContext } from '../../../Auth';
 
 
 const LoggedOutLinks = () => {

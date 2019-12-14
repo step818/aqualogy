@@ -1,16 +1,7 @@
 import React, { Component } from 'react';
 import Post from '../../components/Post/Post';
-import firebase from '../../Firebase';
 
 class Blog extends Component {
-  constructor(props) {
-    super(props);
-    this.ref = firebase.firestore().collection('posts');
-    this.unsubscribe = null;
-    this.state = {
-      posts: []
-    };
-  }
 
   onPostsUpdate = (querySnapshot) => {
     const posts = [];
