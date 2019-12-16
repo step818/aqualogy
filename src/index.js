@@ -21,7 +21,7 @@ import 'firebase/firestore';
 
 
 const rrfConfig = { 
-    userProfile: 'users',
+    userProfile: null,
     useFirestoreForProfile: true,
     attachAuthIsReady: true
 }
