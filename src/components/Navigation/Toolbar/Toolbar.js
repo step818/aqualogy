@@ -5,22 +5,24 @@ import LoggedInLinks from '../NavigationItems/LoggedInLinks';
 import LoggedOutLinks from '../NavigationItems/LoggedOutLinks';
 import { connect } from 'react-redux';
 
-const toolbar = () => (
-  <header className={classes.Toolbar}>
-    <nav className={classes.DesktopOnly}>
-      <div className="row right">
-        <NavigationItems/>
-        <LoggedOutLinks />
-        <LoggedInLinks />
-      </div>
-    </nav>
-  </header>
-  
-);
+const toolbar = (props) => {
+  const { auth } = props;
+  const links = auth.uid ? <LoggedInLinks /> : <LoggedOutLinks />
+  return (
+    <header className={classes.Toolbar}>
+      <nav className={classes.DesktopOnly}>
+        <div className="row right">
+          <NavigationItems/>
+          {auth.isLoaded && links}
+        </div>
+      </nav>
+    </header>
+  )
+};
 
 const mapStateToProps = (state) => {
   return {
-
+    auth: state.firebase.auth
   }
 }
 

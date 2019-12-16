@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createBlog } from '../../store/actions/blogActions';
+import { Redirect } from 'react-router-dom';
 
 class NewPost extends Component {
   state = {
@@ -21,6 +22,11 @@ class NewPost extends Component {
   }
 
   render() {
+    const { auth } = this.props;
+    if (!auth.uid) {
+      return( <Redirect to={"/"} /> );
+    }
+    
     return (
       <div className="container">
         <form onSubmit={this.handleSubmit} className="white">
@@ -42,10 +48,16 @@ class NewPost extends Component {
   }
 }
 
+const mapStateToProps = (state) => {
+  return {
+    auth: state.firebase.auth
+  }
+}
+
 const mapDispatchToProps = (dispatch) => {
   return {
     createBlog: (blog) => dispatch(createBlog(blog))
   }
 }
 
-export default connect(null, mapDispatchToProps)(NewPost);
+export default connect(mapStateToProps, mapDispatchToProps)(NewPost);
