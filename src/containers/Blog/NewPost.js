@@ -19,6 +19,7 @@ class NewPost extends Component {
     e.preventDefault();
     // console.log(this.state);
     this.props.createBlog(this.state);
+    this.props.history.push('/');
   }
 
   render() {

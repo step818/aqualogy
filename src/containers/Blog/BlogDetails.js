@@ -14,8 +14,8 @@ const BlogDetails = (props) => {
           <p>{ blog.content }</p>
         </div>
         <div className="card-action grey lighten-4 grey-text">
-          <div>Posted by Veronika Gudiyev</div>
-          <div>Posted 13th December, 2019</div>
+          <div>Posted by {blog.authorFirstName} {blog.authorLastName}</div>
+          <div>Posted {blog.createdAt.toDate().toString()}</div>
         </div>
       </div>
     </div>

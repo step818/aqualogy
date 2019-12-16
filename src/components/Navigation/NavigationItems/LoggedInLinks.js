@@ -9,14 +9,14 @@ import { signOut } from '../../../store/actions/authActions';
 const LoggedInLinks = (props) => {
   const { auth } = props;
 
-  const admin = auth.uid ===  "o8eSpCc12XOWv0lICKwqj454tz33" ? 
+  const admin = auth.uid ===  "oZkz1z3qTAShHRfjVhSPMNxm4s72" ? 
   <NavigationItem link="/newpost">New Post</NavigationItem> : null
   
   return(
   <ul className={classes.NavigationItems}>
     {auth.isLoaded && admin}
     <NavLink to="/" onClick={props.signOut}>Log Out</NavLink>
-    <li><NavLink to="/" className='btn btn-floating pink lighten-1'>ST</NavLink></li>
+  <li><NavLink to="/" className='btn btn-floating pink lighten-1'>{props.profile.initials}</NavLink></li>
   </ul>
   )};
 

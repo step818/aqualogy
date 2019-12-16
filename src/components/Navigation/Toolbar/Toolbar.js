@@ -6,8 +6,8 @@ import LoggedOutLinks from '../NavigationItems/LoggedOutLinks';
 import { connect } from 'react-redux';
 
 const toolbar = (props) => {
-  const { auth } = props;
-  const links = auth.uid ? <LoggedInLinks /> : <LoggedOutLinks />
+  const { auth, profile } = props;
+  const links = auth.uid ? <LoggedInLinks profile={profile} /> : <LoggedOutLinks />
   return (
     <header className={classes.Toolbar}>
       <nav className={classes.DesktopOnly}>
@@ -21,8 +21,10 @@ const toolbar = (props) => {
 };
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
-    auth: state.firebase.auth
+    auth: state.firebase.auth,
+    profile: state.firebase.profile
   }
 }
 
