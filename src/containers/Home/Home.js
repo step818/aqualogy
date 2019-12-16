@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Blog from '../Blog/Blog';
 import BlogList from '../Blog/BlogList';
 import Notifications from './Notifications';
 import { connect } from 'react-redux';
+import { firestoreConnect } from 'react-redux-firebase';
+import { compose } from 'redux';
 
 class Home extends Component {
 
@@ -33,9 +34,15 @@ class Home extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
-    blogs: state.blog.blogs
+    blogs: state.firestore.ordered.blogs
   }
 }
 
-export default connect(mapStateToProps)(Home);
+export default compose(
+  connect(mapStateToProps),
+  firestoreConnect([
+    { collection: 'blogs' }
+  ])
+)(Home);
