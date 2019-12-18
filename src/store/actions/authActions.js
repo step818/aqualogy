@@ -1,6 +1,7 @@
 export const signIn = (credentials) => {
-  return (dispatch, getState, {getFirebase}) => {
+  return (dispatch, getState, {getFirebase, getFirestore}) => {
     const firebase = getFirebase();
+    const firestore = getFirestore();
 
     firebase.auth().signInWithEmailAndPassword(
       credentials.email,

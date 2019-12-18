@@ -1,8 +1,9 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
+import 'firebase/functions';
 
-var firebaseConfig = {
+const firebaseConfig = {
   apiKey: "AIzaSyC557LULkrM1gUvqiuw826lCXVQBgID6gg",
   authDomain: "aqualogy-f1531.firebaseapp.com",
   databaseURL: "https://aqualogy-f1531.firebaseio.com",
@@ -14,6 +15,10 @@ var firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 // firebase.firestore().settings({ timestampsInSnapshots: true });
+// Initialize other services on firebase instance
+firebase.firestore();
+firebase.functions(); 
+
 
 export default firebase;
 

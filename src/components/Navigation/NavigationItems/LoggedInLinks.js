@@ -9,7 +9,7 @@ import { signOut } from '../../../store/actions/authActions';
 const LoggedInLinks = (props) => {
   const { auth } = props;
 
-  const admin = auth.uid ===  "oZkz1z3qTAShHRfjVhSPMNxm4s72" ? 
+  const admin = auth.uid ===  "F0coC7iTj6Qo0ZX3pqt8npR5oTS2" ? 
   <NavigationItem link="/newpost">New Post</NavigationItem> : null
   
   return(
