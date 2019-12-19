@@ -10,7 +10,6 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import authReducer from './store/reducers/authReducer';
 import blogReducer from './store/reducers/blogReducer';
-// import rootReducer from './store/reducers/rootReducer'
 import { firebaseReducer } from 'react-redux-firebase';
 import { firestoreReducer } from 'redux-firestore';
 

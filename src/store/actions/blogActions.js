@@ -6,9 +6,9 @@ export const createBlog = (blog) => {
     const authorId = getState().firebase.auth.uid;
     firestore.collection('blogs').add({
       ...blog,
-      authorFirstName: profile.firstName,
-      authorLastName: profile.lastName,
-      authorId: authorId,
+      authorFirstName: 'stephen',
+      authorLastName: 'trewick',
+      authorId: 12345,
       createdAt: new Date()
     }).then(() => {
       dispatch({ type: 'CREATE_BLOG', blog });
