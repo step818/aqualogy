@@ -24,6 +24,7 @@ class NewPost extends Component {
 
   render() {
     const { auth } = this.props;
+// Protect routes from unauthorized users
     if (!auth.uid) {
       return( <Redirect to={"/"} /> );
     }
