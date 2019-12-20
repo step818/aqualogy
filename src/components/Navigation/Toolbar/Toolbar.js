@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 
 const toolbar = (props) => {
   const { auth, profile } = props;
-  console.log(profile);
   const links = auth.uid ? <LoggedInLinks profile={profile} /> : <LoggedOutLinks />
   return (
     <header className={classes.Toolbar}>
@@ -22,7 +21,7 @@ const toolbar = (props) => {
 };
 
 const mapStateToProps = (state) => {
-  console.log(state);
+  // console.log(state);
   return {
     auth: state.firebase.auth,
     profile: state.firebase.profile

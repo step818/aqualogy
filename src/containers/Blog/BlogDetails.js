@@ -7,7 +7,7 @@ import moment from 'moment';
 const BlogDetails = (props) => {
   // console.log(props);
   const { blog } = props;
-  const id = props.match.params.id;
+  // const id = props.match.params.id;
   if (blog) {
     return (
       <div className="container section project-details">
