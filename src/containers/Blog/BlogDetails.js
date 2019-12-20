@@ -5,6 +5,7 @@ import { compose } from 'redux';
 import moment from 'moment';
 
 const BlogDetails = (props) => {
+  console.log(props);
   const { blog } = props;
   const id = props.match.params.id;
   if (blog) {
@@ -16,7 +17,7 @@ const BlogDetails = (props) => {
           <p>{ blog.content }</p>
         </div>
         <div className="card-action grey lighten-4 grey-text">
-          <div>Posted by </div>
+          <div>Posted by { blog.authorFirstName } {blog.authorLastName }</div>
           <div>Posted {moment(blog.createdAt.toDate()).calendar()}</div>
         </div>
       </div>
@@ -32,8 +33,8 @@ const BlogDetails = (props) => {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  console.log('Blog details props: ', ownProps);
-  console.log('Blog Details: ',state);
+  // console.log('Blog details props: ', ownProps);
+  // console.log('Blog Details: ',state);
   const id = ownProps.match.params.id;
   const blogs = state.firestore.data.blogs;
   const blog = blogs ? blogs[id] : null;

@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 
 const toolbar = (props) => {
   const { auth, profile } = props;
+  console.log(profile);
   const links = auth.uid ? <LoggedInLinks profile={profile} /> : <LoggedOutLinks />
   return (
     <header className={classes.Toolbar}>
