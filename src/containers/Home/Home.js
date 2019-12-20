@@ -10,7 +10,7 @@ class Home extends Component {
 
   render () {
     // console.log(this.props);
-    const { blogs } = this.props;
+    const { blogs, notifications } = this.props;
 
     return(
       <div>
@@ -23,7 +23,7 @@ class Home extends Component {
               <BlogList blogs={blogs}/>
             </div>
             <div className="col s12 m5 offset-m1">
-              <Notifications />
+              <Notifications notifications={notifications} />
             </div>
           </div>
         </div>
@@ -35,13 +35,15 @@ class Home extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    blogs: state.firestore.ordered.blogs
+    blogs: state.firestore.ordered.blogs,
+    notifications: state.firestore.ordered.notifications
   }
 }
 
 export default compose(
   connect(mapStateToProps),
   firestoreConnect([
-    { collection: 'blogs' }
+    { collection: 'blogs', orderBy: ['createdAt', 'desc'] },
+    { collection: 'notifications', limit: 3, orderBy: ['time', 'desc']}
   ])
 )(Home);
