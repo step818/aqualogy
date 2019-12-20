@@ -5,7 +5,7 @@ import { compose } from 'redux';
 import moment from 'moment';
 
 const BlogDetails = (props) => {
-  console.log(props);
+  // console.log(props);
   const { blog } = props;
   const id = props.match.params.id;
   if (blog) {
