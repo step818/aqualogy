@@ -7,11 +7,11 @@ const navigationItems = () => {
 
   return(
   <ul className={classes.NavigationItems}>
-    <NavigationItem link="/" exact>Home</NavigationItem>
-    <NavigationItem link="/blog">Blog</NavigationItem>
-    <NavigationItem link="/book">Contact</NavigationItem>
-    <NavigationItem link="/about">About Me</NavigationItem>
-    <NavigationItem link="/forum">Forum</NavigationItem>
+    <li><NavigationItem link="/" exact>Home</NavigationItem></li>
+    <li><NavigationItem link="/blog">Blog</NavigationItem></li>
+    <li><NavigationItem link="/book">Contact</NavigationItem></li>
+    <li><NavigationItem link="/about">About Me</NavigationItem></li>
+    <li><NavigationItem link="/forum">Forum</NavigationItem></li>
   </ul>
   )};
 

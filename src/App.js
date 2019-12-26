@@ -16,6 +16,7 @@ import Layout from './hoc/Layout/Layout';
 import AdminLogin from './containers/AdminLogin/AdminLogin';
 import NewPost from './containers/Blog/NewPost';
 import BlogList from './containers/Blog/BlogList';
+import Notifications from './containers/Home/Notifications';
 
 class App extends Component{
 
@@ -25,6 +26,7 @@ class App extends Component{
           <div className="App" style={{backgroundImage: `url(${homepageBG}`, backgroundSize: '100%', backgroundRepeat: 'repeat' }}>
           <Layout>
             <Switch>
+              <Route path="/notifications" component={Notifications} />
               <Route path="/newpost" component={NewPost} />
               <Route path="/login" component={Login} />
               <Route path="/signup" component={Signup} />

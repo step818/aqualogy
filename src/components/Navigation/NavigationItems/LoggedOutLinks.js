@@ -8,8 +8,8 @@ const LoggedOutLinks = () => {
   
   return(
   <ul className={classes.NavigationItems}>
-    <NavigationItem link="/login">Login</NavigationItem>
-    <NavigationItem link="/signup">Signup</NavigationItem>
+    <li><NavigationItem link="/login">Login</NavigationItem></li>
+    <li><NavigationItem link="/signup">Signup</NavigationItem></li>
   </ul>
   )};
 

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import BlogList from '../Blog/BlogList';
-import Notifications from './Notifications';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
+
+import BlogList from '../Blog/BlogList';
 import { Jumbotron } from 'react-bootstrap';
 
 import jumboBG from '../../assets/img/jumboBG.jpg';
@@ -12,7 +12,7 @@ import jumboBG from '../../assets/img/jumboBG.jpg';
 class Home extends Component {
 
   render () {
-    const { blogs, notifications } = this.props;
+    const { blogs } = this.props;
 
     return(
       <div>
@@ -24,9 +24,6 @@ class Home extends Component {
             <div className="col s12 m6">
               <BlogList blogs={blogs}/>
             </div>
-            <div className="col s12 m5 offset-m1">
-              <Notifications notifications={notifications} />
-            </div>
           </div>
         </div>
         <Link to="/adminLogin">Admin</Link>
@@ -37,15 +34,13 @@ class Home extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    blogs: state.firestore.ordered.blogs,
-    notifications: state.firestore.ordered.notifications
+    blogs: state.firestore.ordered.blogs
   }
 }
 
 export default compose(
   connect(mapStateToProps),
   firestoreConnect([
-    { collection: 'blogs', orderBy: ['createdAt', 'desc'] },
-    { collection: 'notifications', limit: 3, orderBy: ['time', 'desc']}
+    { collection: 'blogs', orderBy: ['createdAt', 'desc'] }
   ])
 )(Home);
