@@ -16,7 +16,7 @@ const LoggedInLinks = (props) => {
   <ul className={classes.NavigationItems}>
     {auth.isLoaded && admin}
     <NavLink to="/" onClick={props.signOut}>Log Out</NavLink>
-  <li><NavLink to="/" className='btn btn-floating pink lighten-1'>{props.profile.initials}</NavLink></li>
+  <li><NavLink to="/" className='btn btn-floating purple lighten-1'>{props.profile.initials}</NavLink></li>
   </ul>
   )};
 

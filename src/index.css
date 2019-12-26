@@ -5,7 +5,7 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background: url(/public/img/mario-bg.png) no-repeat;
+  background-image: url(/src/assets/img/aquaBG.jpg) no-repeat;
   background-size: 100%;
   background-position: bottom;
   background-color: #09263a;
@@ -19,11 +19,6 @@ form {
 
 form button, form h5{
   margin: 20px 0;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
 }
 
 input[type=text]:not(.browser-default):focus:not([readonly]),

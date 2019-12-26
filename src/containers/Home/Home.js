@@ -5,18 +5,20 @@ import Notifications from './Notifications';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
+import { Jumbotron } from 'react-bootstrap';
+
+import jumboBG from '../../assets/img/jumboBG.jpg';
 
 class Home extends Component {
 
   render () {
-    // console.log(this.props);
     const { blogs, notifications } = this.props;
 
     return(
       <div>
-        <div className="jumbotron">
+        <Jumbotron style={{ backgroundImage: `url(${jumboBG}`, backgroundSize: 'cover', fontFamily: 'Courgette', color: 'lavender' }}>
           <h1>Aqualogy</h1>
-        </div>
+        </Jumbotron>
         <div className="dashboard container">
           <div className="row">
             <div className="col s12 m6">

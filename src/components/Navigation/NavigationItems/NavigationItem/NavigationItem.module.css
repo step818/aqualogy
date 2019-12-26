@@ -40,6 +40,6 @@
   .NavigationItem a.active {
     background-color: rgb(56, 70, 155);
     border-bottom: 4px solid #40A4CB;
-    color: white;
+    color: rgb(255, 255, 255);
   }
 }

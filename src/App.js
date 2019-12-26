@@ -2,13 +2,13 @@ import React, {Component} from 'react';
 import { Switch, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import homepageBG from '../src/assets/img/aquaBG.jpg';
 import './App.css';
 import NotFound from './components/404NotFound/404NotFound';
 import Home from './containers/Home/Home';
 import Forum from './containers/Forum/Forum';
 import Login from './containers/Login/Login';
 import Signup from './containers/Login/Signup';
-// import Blog from './containers/Blog/Blog';
 import BlogDetails from './containers/Blog/BlogDetails';
 import Book from './containers/Book/Book';
 import About from './containers/About/About';
@@ -22,7 +22,7 @@ class App extends Component{
 
   render() {
     return (
-          <div className="App">
+          <div className="App" style={{backgroundImage: `url(${homepageBG}`, backgroundSize: '100%', backgroundRepeat: 'repeat' }}>
           <Layout>
             <Switch>
               <Route path="/newpost" component={NewPost} />
