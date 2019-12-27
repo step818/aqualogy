@@ -3,9 +3,13 @@ import moment from 'moment';
 import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
+import {Redirect} from 'react-router-dom';
 
 class Notifications extends React.Component {
   render() {
+    if (!this.props.auth.uid) {
+      return ( <Redirect to={"/"} /> );
+    }
     return (
       <div className="section">
         <div className="card z-depth-0">
@@ -34,6 +38,7 @@ class Notifications extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
+    auth: state.firebase.auth,
     notifications: state.firestore.ordered.notifications
   }
 }
