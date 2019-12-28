@@ -1,9 +1,5 @@
 const initState = {
-  blogs: [
-    {id: '1', title: 'ice cube', content: 'today was a good day'},
-    {id: '2', title: 'leos are the coolest', content: 'i like you'},
-    {id: '3', title: 'venus in retrograde', content: 'you guys suck'}
-  ]
+  blogs: ""
 }
 
 const blogReducer = (state = initState, action) => {

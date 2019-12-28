@@ -21,6 +21,9 @@ class Notifications extends React.Component {
                   <li key={notif.id}>
                     <span className="pink-text">{notif.user} </span>
                     <span>{notif.content}</span>
+                    <span>{notif.schedule}</span>
+                    <span>Contact info: Email: {notif.email}, Phone Number: {notif.phoneNumber}</span>
+                    <span>Description: {notif.description}</span>
                     <div className="grey-text note-date">
                       {moment(notif.time.toDate()).fromNow()}
                     </div>
@@ -37,6 +40,7 @@ class Notifications extends React.Component {
 };
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
     auth: state.firebase.auth,
     notifications: state.firestore.ordered.notifications

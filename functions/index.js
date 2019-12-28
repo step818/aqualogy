@@ -8,9 +8,9 @@ const createNotification = ((notification) => {
     .then(doc => console.log('notification added', doc))
 });
 
-exports.helloWorld = functions.https.onRequest((request, response) => {
-  response.send("Hello, magical people!");
-});
+// exports.helloWorld = functions.https.onRequest((request, response) => {
+//   response.send("Hello, magical people!");
+// });
 
 exports.blogCreated = functions.firestore
   .document('blogs/{blogId}')
@@ -21,6 +21,25 @@ exports.blogCreated = functions.firestore
       content: 'Added a new blog',
       user: `${blog.authorFirstName} ${blog.authorLastName}`,
       time: admin.firestore.FieldValue.serverTimestamp()
+    }
+
+    return createNotification(notification);
+});
+
+exports.appointmentCreated = functions.firestore
+  .document('appointments/{apptId}')
+  .onCreate(doc => {
+
+    const appt = doc.data();
+    console.log("appt: ",appt);
+    const notification = {
+      content: 'Scheduled a new appointment',
+      user: `${appt.name}`,
+      time: admin.firestore.FieldValue.serverTimestamp(),
+      schedule: `Scheduled for ${appt.date} at ${appt.time}`,
+      email: `${appt.email}`,
+      phoneNumber: `${appt.phoneNumber}`,
+      description: `${appt.description}`
     }
 
     return createNotification(notification);

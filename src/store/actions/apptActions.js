@@ -11,9 +11,9 @@ export const createAppt = (appt) => {
       authorId: authorId,
       createdAt: new Date()
     }).then(() => {
-      dispatch({ type: 'CREATE_BLOG', appt });
+      dispatch({ type: 'CREATE_APPT', appt });
     }).catch((err) => {
-      dispatch({ type: 'CREATE_BLOG_ERROR', err });
+      dispatch({ type: 'CREATE_APPT_ERROR', err });
     })
     
   }

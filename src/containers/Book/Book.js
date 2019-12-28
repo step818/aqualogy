@@ -4,10 +4,10 @@ import { createAppt } from '../../store/actions/apptActions';
 // import { Redirect } from 'react-router-dom';
 
 class Book extends Component {
-  state = {
-    title: '',
-    content: ''
-  }
+  // state = {
+  //   title: '',
+  //   content: ''
+  // }
 
   handleChange = (e) => {
     this.setState({
@@ -67,7 +67,6 @@ class Book extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     auth: state.firebase.auth
   }
@@ -75,7 +74,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    createBlog: (appt) => dispatch(createAppt(appt))
+    createAppt: (appt) => dispatch(createAppt(appt))
   }
 }
 

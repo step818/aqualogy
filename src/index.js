@@ -10,6 +10,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import authReducer from './store/reducers/authReducer';
 import blogReducer from './store/reducers/blogReducer';
+import apptReducer from './store/reducers/apptReducer';
 import { firebaseReducer } from 'react-redux-firebase';
 import { firestoreReducer } from 'redux-firestore';
 
@@ -24,6 +25,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const rootReducer = combineReducers({
     auth: authReducer,
     blog: blogReducer,
+    apptReducer,
     firebase: firebaseReducer,
     firestore: firestoreReducer
 });
