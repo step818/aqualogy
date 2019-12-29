@@ -26,7 +26,6 @@ class Home extends Component {
             </div>
           </div>
         </div>
-        <Link to="/adminLogin">Admin</Link>
       </div>
     );
   }
