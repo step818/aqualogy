@@ -15,8 +15,8 @@ import About from './containers/About/About';
 import Layout from './hoc/Layout/Layout';
 import AdminLogin from './containers/AdminLogin/AdminLogin';
 import NewPost from './containers/Blog/NewPost';
-import BlogList from './containers/Blog/BlogList';
 import Notifications from './containers/Home/Notifications';
+import BlogPage from './containers/Blog/BlogPage';
 
 class App extends Component{
 
@@ -31,7 +31,7 @@ class App extends Component{
               <Route path="/login" component={Login} />
               <Route path="/signup" component={Signup} />
               <Route path="/blog/:id" component={BlogDetails} />
-              <Route path="/blog" component={BlogList} />
+              <Route path="/blog" component={BlogPage} />
               <Route path="/forum" component={Forum} />
               <Route path="/book" component={Book} />
               <Route path="/about" component={About} />
