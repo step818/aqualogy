@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createForum } from '../../store/actions/forumActions';
 import { Redirect } from 'react-router-dom';
+// import { withRouter } from 'react-router-dom';
 
 class PostForum extends Component {
   state = {
@@ -17,11 +18,15 @@ class PostForum extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(this.state);
+    console.log(this.props);
     this.props.createForum(this.state);
+    // window.location.reload()
+    // const { router } = this.props;    
+    // this.props.history.push('/');
   }
 
   render() {
+    
     const { auth } = this.props;
 // Protect routes from unauthorized users
     if (!auth.uid) {
