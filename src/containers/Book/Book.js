@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createAppt } from '../../store/actions/apptActions';
+import Calendar from './Calendar/Calendar';
+// import DatePicker from 'react-datepicker';
+// import Calendar from 'react-calendar';
 // import { Redirect } from 'react-router-dom';
 
+const style = {
+  position: "relative",
+  margin: "50px auto"
+}
+
 class Book extends Component {
-  // state = {
-  //   title: '',
-  //   content: ''
-  // }
 
   handleChange = (e) => {
     this.setState({
@@ -17,17 +21,12 @@ class Book extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    // console.log(this.state);
     this.props.createAppt(this.state);
     this.props.history.push('/');
   }
 
   render() {
     const { auth } = this.props;
-// Protect routes from unauthorized users
-    // if (!auth.uid) {
-    //   return( <Redirect to={"/"} /> );
-    // }
     
     return (
       <div className="container">
@@ -44,6 +43,9 @@ class Book extends Component {
           <div className="input-field">
             <label htmlFor="email">{auth.email}</label>
             <input type="email" id="email" onChange={this.handleChange} />
+          </div>
+          <div>
+            <Calendar style={style} width="302px" />
           </div>
           <div className="input-field">
             <label htmlFor="date">Date</label>
