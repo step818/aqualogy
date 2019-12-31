@@ -41,6 +41,78 @@ class Calendar extends Component {
     return firstDay;
   }
 
+  setMonth = (month) => {
+    let monthNo = this.months.indexOf(month);
+    let dateContext = Object.assign({}, this.state.dateContext);
+    dateContext = moment(dateContext).set("month", monthNo);
+    this.setState({
+      dateContext: dateContext
+    });
+  }
+
+  onSelectChange = (e, data) => {
+    this.setMonth(data);
+    this.props.onMonthChange && this.props.onMonthChange();
+  }
+
+  SelectList = (props) => {
+    let popup = props.data.map((data) => {
+      return (
+        <div key={data}>
+          <a href="#" onClick={(e)=> {this.onSelectChange(e, data)}}>
+            {data}
+          </a>
+        </div>
+      );
+    });
+    return (
+      <div className={classes.monthPopup}>
+        {popup}
+      </div>
+    )
+  }
+
+  onChangeMonth = (e, month) => {
+    this.setState({
+      showMonthPopup: !this.state.showMonthPopup
+    });
+  }
+
+  MonthNav = () => {
+    return (
+      <span className={classes.labelMonth}
+        onClick={(e)=> {this.onChangeMonth(e, this.month())}}>
+        {this.month()}
+        {this.state.showMonthPopup &&
+        <this.SelectList data={this.months} />
+        }
+      </span>
+    )
+  }
+
+  showYearEditor = () => {
+    this.setState({
+      showYearNav: true
+    });
+  }
+
+  YearNav = () => {
+    return (
+      this.state.showYearNav ?
+      <input 
+        defaultValue = {this.year()}
+        className={classes.editorYear}
+        ref={(yearInput) => {this.yearInput = yearInput}}
+        onKeyUp = {(e) => this.onKeyUpYear(e)}
+        onChange = {(e) => this.onYearChange(e)}
+        type="number"
+        placeholder="year"  /> :
+      <span className={classes.labelYear}
+        onDoubleClick={(e)=> { this.showYearEditor()}}>
+        {this.year()}
+      </span>
+    )
+  }
   
   render() {
     // Map the weekdays, i.e. Sun, Mon, Tue, Wed, ... as <td>
@@ -57,7 +129,6 @@ class Calendar extends Component {
         </td>
       );
     }
-    console.log("blanks: ", blanks);
 
     let daysInMonth = [];
     for (let d = 1; d <= this.daysInMonth(); d++) {
@@ -68,7 +139,6 @@ class Calendar extends Component {
         </td>
       );
     }
-    console.log("days: ", daysInMonth);
 
     var totalSlots = [...blanks, ...daysInMonth];
     let rows = [];
@@ -88,7 +158,6 @@ class Calendar extends Component {
         rows.push(insertRow);
       }
     });
-    console.log("rows: ", rows);
 
     let trElems = rows.map((d, i) => {
       return (
@@ -103,7 +172,11 @@ class Calendar extends Component {
         <table className={classes.calendar}>
           <thead>
             <tr className={classes.calendarHeader}>
-              
+              <td colSpan="5">
+                <this.MonthNav />
+                {" "}
+                <this.YearNav />
+              </td>
             </tr>
           </thead>
           <tbody>

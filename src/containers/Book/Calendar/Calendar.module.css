@@ -69,15 +69,15 @@ tr {
     color: black;
 }
 
-.month-popup {
+.monthPopup {
     position: absolute;
-    padding: 5px;
+    padding: 1px;
     background: white;
     border: 2px solid skyblue;
 }
 
-.month-popup div {
-    padding: 0.3em;
+.monthPopup div {
+    padding: 0.1em;
 }
 
 .nav-month {
@@ -93,15 +93,15 @@ tr {
 .next {
 }
 
-.editor-year {
+.editorYear {
     max-width: 3.6em;
 }
 
-.label-month,
-.label-year {
+.labelMonth,
+.labelYear {
     font-size: 0.6em;
 }
 
-.label-month {
+.labelMonth {
     cursor: pointer;
 }
