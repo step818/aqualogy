@@ -1,6 +1,6 @@
 .calendarContainer,
 .calendar,
-.calendar-header,
+.calendarHeader,
 td,
 tr {
     padding: 0;
@@ -18,24 +18,24 @@ tr {
     width: 100%;
 }
 
-.calendar-header {
+.calendarHeader {
     border-bottom: 1px dashed skyblue;
     font-size: 1.6em;
 }
 
-.calendar-header td {
+.calendarHeader td {
     border-spacing: 0;
     padding-left: 5px;
 }
 
 .day,
 .empty-slot,
-.week-day {
+.weekDay {
     text-align: center;
     height: 40px;
 }
 
-.week-day {
+.weekDay {
     font-size: 0.8em;
 }
 
