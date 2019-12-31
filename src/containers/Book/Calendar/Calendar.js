@@ -16,8 +16,8 @@ class Calendar extends Component {
     showYearPopup: false
   }
 
-  weekdays = moment.weekdays();  // ["Sunday", "Monday", "Tuesday", ... ]
-  weekdaysShort = moment.weekdaysShort();  // ["Sun", "Mon", "Tue", ... ]
+  weekdays = moment.weekdays();  // ["Sunday", "Monday", "Tuesday", ... "Sat"]
+  weekdaysShort = moment.weekdaysShort();  // ["Sun", "Mon", "Tue", ... "Sat"]
   months = moment.months();
 
   year = () => {
@@ -49,17 +49,68 @@ class Calendar extends Component {
         <td key={day} className={classes.weekDay}>{day}</td>
       )
     });
-    
+
+    let blanks = [];
+    for (let i = 0; i < this.firstDayOfMonth(); i++) {
+      blanks.push(<td className={classes.emptySlot}>
+          {""}
+        </td>
+      );
+    }
+    console.log("blanks: ", blanks);
+
+    let daysInMonth = [];
+    for (let d = 1; d <= this.daysInMonth(); d++) {
+      let className = (d == this.currentDay()) ? `${classes.currentDay}` : `${classes.day}`;
+      daysInMonth.push(
+        <td key={d} className={className} >
+          <span>{d}</span>
+        </td>
+      );
+    }
+    console.log("days: ", daysInMonth);
+
+    var totalSlots = [...blanks, ...daysInMonth];
+    let rows = [];
+    let cells = [];
+
+    totalSlots.forEach((row, i) => {
+      if ((i % 7) !== 0) {
+        cells.push(row);
+      } else {
+        let insertRow = cells.slice();
+        rows.push(insertRow);
+        cells = [];
+        cells.push(row);
+      }
+      if (i === totalSlots.length - 1) {
+        let insertRow = cells.slice();
+        rows.push(insertRow);
+      }
+    });
+    console.log("rows: ", rows);
+
+    let trElems = rows.map((d, i) => {
+      return (
+        <tr key={i*100}>
+          {d}
+        </tr>
+      );
+    })
+
     return(
-      <div className={classes.calendarContainer}>
+      <div className={classes.calendarContainer} style={this.style}>
         <table className={classes.calendar}>
           <thead>
             <tr className={classes.calendarHeader}>
-
+              
             </tr>
           </thead>
           <tbody>
-
+            <tr>
+              {weekdays}
+            </tr>
+            {trElems}
           </tbody>
         </table>
       </div>

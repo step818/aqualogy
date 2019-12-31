@@ -29,7 +29,7 @@ tr {
 }
 
 .day,
-.empty-slot,
+.emptySlot,
 .weekDay {
     text-align: center;
     height: 40px;
@@ -50,7 +50,9 @@ tr {
     line-height: 24px;
 }
 
-.current-day {
+.currentDay {
+    cursor: pointer;
+    text-align: center;
     background-color: #4285f4;
     width: 28px;
     height: 28px;
