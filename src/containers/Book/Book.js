@@ -25,6 +25,10 @@ class Book extends Component {
     this.props.history.push('/');
   }
 
+  onDayClick = (e, day) => {
+    alert(day);
+  }
+
   render() {
     const { auth } = this.props;
     
@@ -45,7 +49,8 @@ class Book extends Component {
             <input type="email" id="email" onChange={this.handleChange} />
           </div>
           <div>
-            <Calendar style={style} width="302px" />
+            <Calendar style={style} width="302px"
+              onDayClick={(e, day)=> this.onDayClick(e, day)}  />
           </div>
           <div className="input-field">
             <label htmlFor="date">Date</label>

@@ -50,6 +50,24 @@ class Calendar extends Component {
     });
   }
 
+  nextMonth = () => {
+    let dateContext = Object.assign({}, this.state.dateContext);
+    dateContext = moment(dateContext).add(1, "month");
+    this.setState({
+      dateContext: dateContext
+    });
+    this.props.onNextMonth && this.props.onNextMonth();
+  }
+
+  prevMonth = () => {
+    let dateContext = Object.assign({}, this.state.dateContext);
+    dateContext = moment(dateContext).subtract(1, "month");
+    this.setState({
+      dateContext: dateContext
+    });
+    this.props.onPrevMonth && this.props.onPrevMonth();
+  }
+
   onSelectChange = (e, data) => {
     this.setMonth(data);
     this.props.onMonthChange && this.props.onMonthChange();
@@ -96,6 +114,29 @@ class Calendar extends Component {
     });
   }
 
+  setYear = (year) => {
+    let dateContext = Object.assign({}, this.state.dateContext);
+    dateContext = moment(dateContext).set("year", year);
+    this.setState({
+      dateContext: dateContext
+    })
+  }
+
+  onYearChange = (e) => {
+    this.setYear(e.target.value);
+    this.props.onYearChange && this.props.onYearChange(e, e.target.value);
+    }
+
+  onKeyUpYear = (e) => {
+    // e.which == 13 is for the Enter key
+    if (e.which == 27) {
+      this.setYear(e.target.value);
+      this.setState({
+        showYearNav: false
+      })
+    }
+  }
+
   YearNav = () => {
     return (
       this.state.showYearNav ?
@@ -112,6 +153,10 @@ class Calendar extends Component {
         {this.year()}
       </span>
     )
+  }
+
+  onDayClick = (e,day) => {
+    this.props.onDayClick && this.props.onDayClick(e, day);
   }
   
   render() {
@@ -135,7 +180,7 @@ class Calendar extends Component {
       let className = (d == this.currentDay()) ? `${classes.currentDay}` : `${classes.day}`;
       daysInMonth.push(
         <td key={d} className={className} >
-          <span>{d}</span>
+          <span onClick={(e)=> {this.onDayClick(e,d)}} >{d}</span>
         </td>
       );
     }
@@ -176,6 +221,14 @@ class Calendar extends Component {
                 <this.MonthNav />
                 {" "}
                 <this.YearNav />
+              </td>
+              <td colSpan="2" className={classes.navMonth}>
+                <i className={classes.prev}
+                  onClick={(e)=> {this.prevMonth()}}>
+                </i>
+                <i className={classes.next}
+                  onClick={(e)=> {this.nextMonth()}}>
+                </i>
               </td>
             </tr>
           </thead>
