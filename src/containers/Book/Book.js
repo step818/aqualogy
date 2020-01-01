@@ -53,7 +53,7 @@ class Book extends Component {
             <Calendar style={style} width="302px"
               onDayClick={(e, day)=> this.onDayClick(e, day)}  />
           </div> */}
-          <div className={classes.date}>
+          <div className="input-field">
             <label htmlFor="date">When</label>
             <input type="date" id="date" onChange={this.handleChange} />
           </div>
