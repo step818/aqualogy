@@ -9,7 +9,8 @@ export const createAppt = (appt) => {
       firstName: profile.firstName,
       lastName: profile.lastName,
       authorId: authorId,
-      createdAt: new Date()
+      createdAt: new Date(),
+      
     }).then(() => {
       dispatch({ type: 'CREATE_APPT', appt });
     }).catch((err) => {

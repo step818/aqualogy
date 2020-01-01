@@ -25,7 +25,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const rootReducer = combineReducers({
     auth: authReducer,
     blog: blogReducer,
-    apptReducer,
+    appt: apptReducer,
     firebase: firebaseReducer,
     firestore: firestoreReducer
 });
