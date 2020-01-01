@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createAppt } from '../../store/actions/apptActions';
+import classes from './Book.module.css';
 import Calendar from './Calendar/Calendar';
 // import DatePicker from 'react-datepicker';
 // import Calendar from 'react-calendar';
 // import { Redirect } from 'react-router-dom';
 
-const style = {
-  position: "relative",
-  margin: "50px auto"
-}
+// const style = {
+//   position: "relative",
+//   margin: "50px auto"
+// }
 
 class Book extends Component {
 
@@ -48,12 +49,12 @@ class Book extends Component {
             <label htmlFor="email">{auth.email}</label>
             <input type="email" id="email" onChange={this.handleChange} />
           </div>
-          <div>
+          {/* <div>
             <Calendar style={style} width="302px"
               onDayClick={(e, day)=> this.onDayClick(e, day)}  />
-          </div>
-          <div className="input-field">
-            <label htmlFor="date">Date</label>
+          </div> */}
+          <div className={classes.date}>
+            <label htmlFor="date">When</label>
             <input type="date" id="date" onChange={this.handleChange} />
           </div>
           <div className="input-field">
@@ -65,7 +66,7 @@ class Book extends Component {
             <textarea id="description" className="textarea" onChange={this.handleChange} />
           </div>
           <div className="input-field">
-            <button className="btn pink lighten-1 z-depth-0">Book</button>
+            <button className="btn pink lighten-1 z-depth-2">Book</button>
           </div>
         </form>
       </div>
