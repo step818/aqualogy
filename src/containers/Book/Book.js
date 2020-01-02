@@ -56,6 +56,17 @@ class Book extends Component {
             <Calendar style={style} width="302px"
               onDayClick={(e, day)=> this.onDayClick(e, day)}  />
           </div> */}
+          <p>The below dates and times are unvailable time slots</p>
+          <ul>
+          {this.props.appointments && this.props.appointments.map(appt => {
+            return (
+              <li key={appt.id}>
+                <span>{appt.date}</span>
+                <span>{appt.time}</span>
+              </li>
+            )
+          })}
+          </ul>
           <div className="input-field">
             <label htmlFor="date">When</label>
             <input type="date" id="date" onChange={this.handleChange} />
@@ -72,16 +83,6 @@ class Book extends Component {
             <button className="btn pink lighten-1 z-depth-2">Book</button>
           </div>
         </form>
-        <ul>
-        {this.props.appointments && this.props.appointments.map(appt => {
-          return (
-            <li key={appt.id}>
-              <span>{appt.date}</span>
-              <span>{appt.time}</span>
-            </li>
-          )
-        })}
-        </ul>
       </div>
     );
   }

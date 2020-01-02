@@ -10,7 +10,7 @@ const toolbar = (props) => {
   const links = auth.uid ? <LoggedInLinks profile={profile} /> : <LoggedOutLinks />
   return (
     <header className={classes.Toolbar}>
-      <nav className={classes.DesktopOnly}>
+      <nav className="card purple lighten-3">
         <div className="row right">
           <NavigationItems/>
           {auth.isLoaded && links}

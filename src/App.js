@@ -13,7 +13,6 @@ import BlogDetails from './containers/Blog/BlogDetails';
 import Book from './containers/Book/Book';
 import About from './containers/About/About';
 import Layout from './hoc/Layout/Layout';
-import AdminLogin from './containers/AdminLogin/AdminLogin';
 import NewPost from './containers/Blog/NewPost';
 import Notifications from './containers/Home/Notifications';
 import BlogPage from './containers/Blog/BlogPage';
@@ -23,7 +22,7 @@ class App extends Component{
 
   render() {
     return (
-          <div className="App" style={{backgroundImage: `url(${homepageBG}`, backgroundSize: '100%', backgroundRepeat: 'repeat' }}>
+          <div className="App" style={{backgroundColor: 'floralwhite', backgroundSize: '100%', backgroundRepeat: 'repeat' }}>
           <Layout>
             <Switch>
               <Route path="/notifications" component={Notifications} />
@@ -35,7 +34,6 @@ class App extends Component{
               <Route path="/forum" component={Forum} />
               <Route path="/book" component={Book} />
               <Route path="/about" component={About} />
-              <Route path="/adminLogin" component={AdminLogin} />
               <Route exact path="/" component={Home} />
               <Route component={NotFound} />
             </Switch>
