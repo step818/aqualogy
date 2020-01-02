@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createAppt } from '../../store/actions/apptActions';
+import { compose } from 'redux';
+import { firestoreConnect } from 'react-redux-firebase';
+
 import classes from './Book.module.css';
 import Calendar from './Calendar/Calendar';
 // import DatePicker from 'react-datepicker';
@@ -32,7 +35,7 @@ class Book extends Component {
 
   render() {
     const { auth } = this.props;
-    
+    const { appointments } = this.props;
     return (
       <div className="container">
         <form onSubmit={this.handleSubmit} className="white">
@@ -69,14 +72,26 @@ class Book extends Component {
             <button className="btn pink lighten-1 z-depth-2">Book</button>
           </div>
         </form>
+        <ul>
+        {this.props.appointments && this.props.appointments.map(appt => {
+          return (
+            <li key={appt.id}>
+              <span>{appt.date}</span>
+              <span>{appt.time}</span>
+            </li>
+          )
+        })}
+        </ul>
       </div>
     );
   }
 }
 
 const mapStateToProps = (state) => {
+  console.log(state.firestore.ordered.appointments);
   return {
-    auth: state.firebase.auth
+    auth: state.firebase.auth,
+    appointments: state.firestore.ordered.appointments
   }
 }
 
@@ -86,4 +101,8 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Book);
+export default compose(
+  connect(mapStateToProps, mapDispatchToProps),firestoreConnect([
+    {collection: 'appointments'}
+  ])
+)(Book);
