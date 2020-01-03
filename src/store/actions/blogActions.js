@@ -4,12 +4,14 @@ export const createBlog = (blog) => {
     const firestore = getFirestore();
     const profile = getState().firebase.profile;
     const authorId = getState().firebase.auth.uid;
+    const snippet = blog.content.substr(0,149);
     firestore.collection('blogs').add({
       ...blog,
       authorFirstName: profile.firstName,
       authorLastName: profile.lastName,
       authorId: authorId,
-      createdAt: new Date()
+      createdAt: new Date(),
+      snippet: snippet
     }).then(() => {
       dispatch({ type: 'CREATE_BLOG', blog });
     }).catch((err) => {

@@ -8,10 +8,10 @@ import { signOut } from '../../../store/actions/authActions';
 
 const LoggedInLinks = (props) => {
   const { auth } = props;
-  // const { month } = props;
+  const { profile } = props;
 
   const admin = auth.uid ===  "F0coC7iTj6Qo0ZX3pqt8npR5oTS2" ? <div>
-  <li><NavigationItem link="/newpost">New Post</NavigationItem></li>
+  <li><NavigationItem link="/newpost">Create Post</NavigationItem></li>
   <li><NavigationItem link="/notifications">Notifications</NavigationItem></li></div> : null
 
   let sign = null;
@@ -23,13 +23,15 @@ const LoggedInLinks = (props) => {
   <ul className={classes.NavigationItems}>
     {auth.isLoaded && admin}
     <li><NavLink to="/" onClick={props.signOut}>Log Out</NavLink></li>
-    <li><NavLink to="/" className='btn btn-floating purple lighten-1'>{sign}</NavLink></li>
+    <li><NavLink to="/" className='waves-effect waves-light btn-small purple darken-1'><i class="material-icons left">star</i>{profile.initials}</NavLink></li>
   </ul>
   )};
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
-    auth: state.firebase.auth
+    auth: state.firebase.auth,
+    profile: state.firebase.profile
   }
 }
 
