@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createBlog } from '../../store/actions/blogActions';
+import { uploadImage } from '../../store/actions/imageActions';
 import { Redirect } from 'react-router-dom';
+
+import {storage} from 'firebase';
 
 class NewPost extends Component {
   state = {
@@ -17,8 +20,15 @@ class NewPost extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.props);
+    // if(this.state.files[0]) {
+    //   const image = e.target.files[0];
+    this.handleUpload(this.state.files[0]);
+    // }
     this.props.createBlog(this.state);
+  }
+
+  handleUpload = (blogImage) => {
+    this.props.uploadImage(blogImage);
     this.props.history.push('/');
   }
 
@@ -42,7 +52,8 @@ class NewPost extends Component {
             <textarea id="content" className="materialize-textarea" onChange={this.handleChange} />
           </div>
           <div>
-            <input type="file" id="img" onChange={this.handleChange} />
+            <label htmlFor="files">Upload an image for the header</label>
+            <input type="file" id="files" onChange={this.handleChange} />
           </div>
           <div className="input-field">
             <button className="btn pink lighten-1 z-depth-0">Post</button>
@@ -54,6 +65,7 @@ class NewPost extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
     auth: state.firebase.auth
   }
@@ -61,7 +73,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    createBlog: (blog) => dispatch(createBlog(blog))
+    createBlog: (blog) => dispatch(createBlog(blog)),
+    uploadImage: (blogImage) => dispatch(uploadImage(blogImage)) 
   }
 }
 

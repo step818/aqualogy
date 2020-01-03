@@ -2,6 +2,9 @@ import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/auth';
 import 'firebase/functions';
+import 'firebase/storage';
+
+
 
 const firebaseConfig = {
   apiKey: "AIzaSyC557LULkrM1gUvqiuw826lCXVQBgID6gg",
@@ -12,13 +15,17 @@ const firebaseConfig = {
   messagingSenderId: "941784986270",
   appId: "1:941784986270:web:8112071cb40c308632818f"
 };
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 // firebase.firestore().settings({ timestampsInSnapshots: true });
 // Initialize other services on firebase instance
 firebase.firestore();
 firebase.functions(); 
+firebase.storage();
 
+export const storage = firebase.storage();
+export const storageRef = firebase.storage().ref();
 
 export default firebase;
 
