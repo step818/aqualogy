@@ -41,6 +41,9 @@ class NewPost extends Component {
             <label htmlFor="content">Blog Content</label>
             <textarea id="content" className="materialize-textarea" onChange={this.handleChange} />
           </div>
+          <div>
+            <input type="file" id="img" onChange={this.handleChange} />
+          </div>
           <div className="input-field">
             <button className="btn pink lighten-1 z-depth-0">Post</button>
           </div>

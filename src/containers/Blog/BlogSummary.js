@@ -7,6 +7,7 @@ const BlogSummary = ({blog}) => {
     <div className="z-depth-5">
       <div className="card indigo lighten-5">
         <div className="card-content black-text text-darken-5">
+          <div>{blog.headerImg}</div>
           <span className="card-title" style={{ fontFamily: 'Courgette', fontWeight: '750', fontSize: '25px' }}>{blog.title}</span>
           <p>By {blog.authorFirstName} {blog.authorLastName} - {moment(blog.createdAt.toDate()).calendar()}</p>
           <p className="black-text">{blog.snippet}...</p>
