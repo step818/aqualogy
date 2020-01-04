@@ -4,15 +4,33 @@ import { createBlog } from '../../store/actions/blogActions';
 import { uploadImage } from '../../store/actions/imageActions';
 import { Redirect } from 'react-router-dom';
 
-import {storage} from 'firebase';
+import PreviewPicture from './PreviewPicture';
 
 class NewPost extends Component {
+  constructor(state) {
+    super(state);
+    this.state = {
+      picture: null,
+      pictureUrl: null
+    }
+  }
   state = {
     title: '',
     content: ''
   }
 
   handleChange = (e) => {
+    if([e.target.id == e.target.files]) {
+      let reader = new FileReader();
+      let file = e.target.files[0];
+      reader.onloadend = () => {
+        this.setState({
+          picture: file,
+          pictureUrl: reader.result
+        });
+      };
+      reader.readAsDataURL(file);
+    }
     this.setState({
       [e.target.id]: e.target.value
     })
@@ -22,7 +40,9 @@ class NewPost extends Component {
     e.preventDefault();
     // if(this.state.files[0]) {
     //   const image = e.target.files[0];
-    this.handleUpload(this.state.files[0]);
+    if(this.state.files[0]) {
+      this.handleUpload(this.state.files[0]);
+    }   
     // }
     this.props.createBlog(this.state);
   }
@@ -33,7 +53,7 @@ class NewPost extends Component {
   }
 
   render() {
-    const { auth } = this.props;
+    const { auth, input } = this.props;
 // Protect routes from unauthorized users
     if (!auth.uid) {
       return( <Redirect to={"/"} /> );
@@ -45,16 +65,19 @@ class NewPost extends Component {
           <h5 className="grey-text text-darken-3">Create New Post</h5>
           <div className="input-field">
             <label htmlFor="title">Title</label>
-            <input type="text" id="title" onChange={this.handleChange} />
+            <input type="text" id="title" onChange={this.handleChange} required={true} />
           </div>
           <div className="input-field">
             <label htmlFor="content">Blog Content</label>
-            <textarea id="content" className="materialize-textarea" onChange={this.handleChange} />
+            <textarea id="content" className="materialize-textarea" onChange={this.handleChange} required={true} />
           </div>
-          <div>
-            <label htmlFor="files">Upload an image for the header</label>
-            <input type="file" id="files" onChange={this.handleChange} />
+          <div className="form-group-row">
+            <label htmlFor="files" className="col-form-label">Upload an image for the header</label>
+            <div className="col-sm-9">
+              <input className="form-control" type="file" id="files" onChange={this.handleChange} required={true} {...input} />
+            </div>
           </div>
+          <PreviewPicture pictureUrl={this.state.pictureUrl} />
           <div className="input-field">
             <button className="btn pink lighten-1 z-depth-0">Post</button>
           </div>

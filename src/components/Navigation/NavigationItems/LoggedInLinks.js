@@ -14,10 +14,6 @@ const LoggedInLinks = (props) => {
   <li><NavigationItem link="/newpost">Create Post</NavigationItem></li>
   <li><NavigationItem link="/notifications">Notifications</NavigationItem></li></div> : null
 
-  let sign = null;
-  if (props.profile.month == "02") {
-    sign = "Aquarius";
-  }
 
   return(
   <ul className={classes.NavigationItems}>

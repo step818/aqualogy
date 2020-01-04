@@ -1,15 +1,21 @@
 import { storageRef } from '../../config/fbConfig';
 import { storage } from '../../config/fbConfig';
+import { getFirebase } from 'react-redux-firebase';
 
 export const uploadImage = (blogImage) => {
   return (dispatch, getState, { getFirestore }
     ) => {
-      const firestore = getFirestore();
-      storage.ref('images').child(blogImage).getDownloadURL()
-        .then(() => {
-          dispatch({ type: 'UPLOAD_IMAGE', blogImage });
-        })
+      const firebase = getFirebase();
 
+      firebase.storage().ref("images").child(blogImage)
+        .getDownloadURL().then((url) => this.setState({avatarUrl: url}))
+        .then(() => {
+          dispatch({ type: 'UPLOAD_IMAGE_SUCCESS', blogImage });
+      }).catch((err) => {
+        dispatch({ type: 'UPLOAD_IMAGE_ERROR', err });
+      })
+  }
+};
       
       // create an Id to match each image with its rightful blog
       // const blogId = getState().firestore.ordered.blogs.id;
@@ -43,5 +49,3 @@ export const uploadImage = (blogImage) => {
     //     console.log(err);
     //   }
     // };
-}
-}

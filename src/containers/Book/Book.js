@@ -4,8 +4,8 @@ import { createAppt } from '../../store/actions/apptActions';
 import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
 
-import classes from './Book.module.css';
-import Calendar from './Calendar/Calendar';
+// import classes from './Book.module.css';
+// import Calendar from './Calendar/Calendar';
 // import DatePicker from 'react-datepicker';
 // import Calendar from 'react-calendar';
 // import { Redirect } from 'react-router-dom';
