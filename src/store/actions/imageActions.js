@@ -1,13 +1,12 @@
-import { storageRef } from '../../config/fbConfig';
 import { storage } from '../../config/fbConfig';
-import { getFirebase } from 'react-redux-firebase';
 
 export const uploadImage = (blogImage) => {
   return (dispatch, getState, { getFirestore }
     ) => {
-      const firebase = getFirebase();
 
-      firebase.storage().ref("images").child(blogImage)
+      storage.child(`profile/${new Date().getTime()}`).put(blogImage).then((snapshot) => {
+      
+      })
         .getDownloadURL().then((url) => this.setState({avatarUrl: url}))
         .then(() => {
           dispatch({ type: 'UPLOAD_IMAGE_SUCCESS', blogImage });

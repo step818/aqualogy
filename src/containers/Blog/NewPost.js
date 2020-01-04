@@ -19,8 +19,7 @@ class NewPost extends Component {
     content: ''
   }
 
-  handleChange = (e) => {
-    if([e.target.id == e.target.files]) {
+  handleImageSelect = (e) => {
       let reader = new FileReader();
       let file = e.target.files[0];
       reader.onloadend = () => {
@@ -30,26 +29,32 @@ class NewPost extends Component {
         });
       };
       reader.readAsDataURL(file);
-    }
     this.setState({
       [e.target.id]: e.target.value
     })
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      [e.target.id]: e.target.value
+    });
   }
 
   handleSubmit = (e) => {
     e.preventDefault();
     // if(this.state.files[0]) {
     //   const image = e.target.files[0];
-    if(this.state.files[0]) {
-      this.handleUpload(this.state.files[0]);
-    }   
+    // if(this.state.files[0]) {
+    //   this.handleUpload(this.state.files[0]);
+    // }   
     // }
     this.props.createBlog(this.state);
+    this.props.history.push('/');
   }
 
   handleUpload = (blogImage) => {
     this.props.uploadImage(blogImage);
-    this.props.history.push('/');
+    
   }
 
   render() {
@@ -71,17 +76,17 @@ class NewPost extends Component {
             <label htmlFor="content">Blog Content</label>
             <textarea id="content" className="materialize-textarea" onChange={this.handleChange} required={true} />
           </div>
-          <div className="form-group-row">
+          {/* <div className="form-group-row">
             <label htmlFor="files" className="col-form-label">Upload an image for the header</label>
             <div className="col-sm-9">
-              <input className="form-control" type="file" id="files" onChange={this.handleChange} required={true} {...input} />
+              <input className="form-control" type="file" id="files" onChange={this.handleImageSelect} required={true} {...input} />
             </div>
-          </div>
-          <PreviewPicture pictureUrl={this.state.pictureUrl} />
+          </div> */}
           <div className="input-field">
             <button className="btn pink lighten-1 z-depth-0">Post</button>
           </div>
         </form>
+        <PreviewPicture pictureUrl={this.state.pictureUrl} />
       </div>
     );
   }
