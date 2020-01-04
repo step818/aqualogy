@@ -23,12 +23,11 @@ const LoggedInLinks = (props) => {
   <ul className={classes.NavigationItems}>
     {auth.isLoaded && admin}
     <li><NavLink to="/" onClick={props.signOut}>Log Out</NavLink></li>
-    <li><NavLink to="/" className='waves-effect waves-light btn-small purple darken-1'><i class="material-icons left">star</i>{profile.initials}</NavLink></li>
+    <li><NavLink to="/" className='waves-effect waves-light btn-small purple darken-1'><i className="material-icons left">star</i>{profile.initials}</NavLink></li>
   </ul>
   )};
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     auth: state.firebase.auth,
     profile: state.firebase.profile
