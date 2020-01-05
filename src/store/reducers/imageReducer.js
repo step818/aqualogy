@@ -1,24 +1,45 @@
-import FileUploader from "react-firebase-file-uploader";
 const initState = {
   error: null,
-  avatarURL: null
+  percent: null,
+  showProgress: false,
+  image: null
 }
 
 const imageReducer = (state = initState, action) => {
   switch (action.type) {
-    case 'UPLOAD_IMAGE':
-      console.log('uploaded image', action.blogImage);
+    case 'UPLOADING_START':
+      console.log('uploading image ...');
       return {
         ...state,
-        avatarURL: action.url,
-        error: false
+        percent: 0,
+        showProgress: true
       };
-    case 'UPLOAD_IMAGE_ERROR':
-      console.log('upload image error', action.err);
+    case 'UPLOADING_SUCCESS':
+      console.log('uploaded image');
       return {
         ...state,
-        error: action.payload
+        error: false,
+        percent: null,
+        showProgress: false
       };
+    case 'UPLOADING_FAIL':
+      console.log('upload image failure');
+      return {
+        ...state,
+        error: action.payload,
+        showProgress: false
+      };
+    case 'UPLOADING':
+      return {
+        ...state,
+        percent: action.payload,
+        showProgress: true
+      };
+    case 'GET_DATA' :
+      return {
+        ...state,
+        image: action.payload
+      }
     default:
       return state;
   }

@@ -20,7 +20,7 @@ class NewPost extends Component {
 
   handleImageSelect = (e) => {
       let reader = new FileReader();
-      let file = e.target.files[0];
+      let file = e.target.file[0];
       reader.onloadend = () => {
         this.setState({
           picture: file,
@@ -41,19 +41,19 @@ class NewPost extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
-    // if(this.state.files[0]) {
-    //   const image = e.target.files[0];
-    // if(this.state.files[0]) {
-    //   this.handleUpload(this.state.files[0]);
-    // }   
+    // if(this.state.file[0]) {
+    //   const image = e.target.file[0];
+    if(this.state.file) {
+      this.handleUpload(this.state.file);
+    }   
     // }
     this.props.createBlog(this.state);
-    this.props.history.push('/');
+    
   }
 
   handleUpload = (blogImage) => {
     this.props.uploadImage(blogImage);
-    
+    // this.props.history.push('/');
   }
 
   render() {
@@ -76,9 +76,9 @@ class NewPost extends Component {
             <textarea id="content" className="materialize-textarea" onChange={this.handleChange} required={true} />
           </div>
           <div className="form-group-row">
-            <label htmlFor="files" className="col-form-label">Upload an image for the header</label>
+            <label htmlFor="file" className="col-form-label">Upload an image for the header</label>
             <div className="col-sm-9">
-              <input className="form-control" type="file" id="files" onChange={this.handleChange} required={true} {...input} />
+              <input className="form-control" type="file" id="file" onChange={this.handleChange} required={true} {...input} />
             </div>
           </div>
           <div className="input-field">

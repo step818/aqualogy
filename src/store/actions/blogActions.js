@@ -10,7 +10,7 @@ export const createBlog = (blog) => {
     const profile = getState().firebase.profile;
     const authorId = getState().firebase.auth.uid;
     const snippet = blog.content.substr(0,149);
-    const headerImg = blog.files;
+    const headerImg = blog.file;
     firestore.collection('blogs').add({
       ...blog,
       authorFirstName: profile.firstName,
@@ -20,14 +20,14 @@ export const createBlog = (blog) => {
       snippet: snippet,
       headerImg: headerImg
     })
-    .then((headerImg) => {
-      storage.ref('images')
-        .child(headerImg)
-        .getDownloadURL()
-        .then((url) => {
-          dispatch ({ type: 'UPLOAD_IMAGE', url });
-        });
-      })
+    // .then((headerImg) => {
+    //   storage.ref('images')
+    //     .child(headerImg)
+    //     .getDownloadURL()
+    //     .then((url) => {
+    //       dispatch ({ type: 'UPLOAD_IMAGE', url });
+    //     });
+    //   })
     .then(() => {
       dispatch({ type: 'CREATE_BLOG', blog });
     }).catch((err) => {

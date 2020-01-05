@@ -1,50 +1,90 @@
-import { storage } from '../../config/fbConfig';
+import { storageRef } from '../../config/fbConfig';
+import { getFirestore } from 'redux-firestore';
 
-export const uploadImage = (blogImage) => {
-  return (dispatch, getState, { getFirestore }
-    ) => {
+export const uploadImage = (data) => async (
+dispatch,
+getState,
+{ getFirestore }
+) => {
+  
+  const firestore = getFirestore();
+  try {
+    // Create the file metadata
+    const metadata = {
+      contentType: "image/jpeg"
+    };
 
-      storage.child(`profile/${new Date().getTime()}`).put(blogImage).then((snapshot) => {
-      
-      })
-        .getDownloadURL().then((url) => this.setState({avatarUrl: url}))
-        .then(() => {
-          dispatch({ type: 'UPLOAD_IMAGE_SUCCESS', blogImage });
-      }).catch((err) => {
-        dispatch({ type: 'UPLOAD_IMAGE_ERROR', err });
-      })
+    // Upload file and metadata to the object
+    const uploadTask = storageRef
+      .child("images/" + data.name)
+      .put(data, metadata);
+
+      dispatch({ type: 'UPLOADING_START' });
+
+      uploadTask.on(
+        "state_changed",
+        function(snapshot) {
+          // Observe state change evenets such as progress, pause, and resume
+          // Get task progress, including number of bytes uploaded and the total number of bytes to be uploaded
+          let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+          dispatch({ type: 'UPLOADING', payload: Math.floor(progress) });
+        },
+        function(error) {
+          // Handle unsuccessful uploads
+          dispatch({ type: 'UPLOADING_FAIL', payload: error });
+        },
+        function() {
+          // Handle successful uploads on complete
+          uploadTask.snapshot.ref.getDownloadURL().then(function(downloadURL) {
+            dispatch({ type: 'UPLOADING_SUCCESS' });
+            firestore.collection("data").doc("user").update({
+              image_url: downloadURL
+            }).then(() => {
+              // get the latest data
+              // once the data is sent to the firestore the latest version is stored in the redux store
+              get_Data(dispatch, getState, { getFirestore });
+            })
+            .catch(e => {
+              console.log("try promise error: ", e);
+            });
+          });
+        }
+      );
+  } catch (err) {
+    console.log("first catch error: ", err);
   }
 };
-      
-      // create an Id to match each image with its rightful blog
-      // const blogId = getState().firestore.ordered.blogs.id;
-    //   try{
-    //     const metadata = {
-    //       contentType: "image/jpeg"
-    //     };
-    //     const uploadTask =  storageRef
-    //       .child("images/" + blogImage.name)
-    //       .put(blogImage, metadata);
 
-    //     uploadTask.on("state_changed",
-    //       // (snapshot) => {
-    //       //   let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-    //       //   dispatch({ type: 'UPLOADING', payload: Math.floor(progress) });
-    //       // },
-    //       (error) => {
-    //         dispatch({ type: 'UPLOADING_FAIL', payload: error });
-    //       },
-    //       () => {
-    //         uploadTask.snapshot.ref.getDownloadURL().then((downloadURL) => {
-    //           dispatch({ type: 'UPLOAD SUCCESS' });
-    //           firestore.collection("data").doc("user").update({
-    //             image_url: downloadURL
-    //           }).catch(err => {
-    //             console.log(err);
-    //           });
-    //         });
-    //         })
-    //       } catch (err) {
-    //     console.log(err);
-    //   }
-    // };
+export const getData = () => async (dispatch, getState, { getFirestore }) => {
+  const firestore = getFirestore();
+  try {
+    const res = await firestore.collection("data").doc("user").get();
+
+    const data = res.data().image_url;
+
+    if (data) {
+      dispatch({ type: 'GET_DATA', payload: data });
+    } else {
+      dispatch({ type: 'GET_DATA', payload: null });
+    }
+  } catch (e) {
+    console.log("2nd catch error: ", e);
+  }
+};
+
+const get_Data = async (dispatch, getState, { getFirestore }) => {
+  const firestore = getFirestore();
+  try {
+    const res = await firestore.collection("data").doc("user").get();
+
+    const data = res.data().image_url;
+
+    if (data)  {
+      dispatch({ type: 'GET_DATA', payload: data });
+    } else {
+      dispatch({ type: 'GET_DATA', payload: null });
+    }
+  } catch (e) {
+    console.log("2nd 2nd catch error: ", e);
+  }
+}
