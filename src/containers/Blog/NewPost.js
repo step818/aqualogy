@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createBlog } from '../../store/actions/blogActions';
-import { uploadImage } from '../../store/actions/imageActions';
+import { uploadImage, getData } from '../../store/actions/imageActions';
 import { Redirect } from 'react-router-dom';
 
 import FileUploader from "react-firebase-file-uploader";
@@ -18,20 +18,26 @@ class NewPost extends Component {
   //   }
   // }
 
-  handleImageSelect = (e) => {
-      let reader = new FileReader();
-      let file = e.target.file[0];
-      reader.onloadend = () => {
-        this.setState({
-          picture: file,
-          pictureUrl: reader.result
-        });
-      };
-      reader.readAsDataURL(file);
-    this.setState({
-      [e.target.id]: e.target.value
-    })
-  }
+  //create ref
+  fileInputRef = React.createRef();
+
+
+  fileChange = (e) => {
+      e.preventDefault();
+      this.setState({ file: e.target.files[0]})
+      let imageFile = e.target.files[0];
+
+      if (imageFile) {
+        const localImageUrl = URL.createObjectURL(imageFile);
+        const imageObject = new window.Image();
+        imageObject.onload = () => {
+          imageFile.width = imageObject.naturalWidth;
+          imageFile.height = imageObject.naturalHeight;
+          URL.revokeObjectURL(imageFile);
+        };
+        imageObject.src = localImageUrl;
+      }
+    };
 
   handleChange = (e) => {
     this.setState({
@@ -39,22 +45,38 @@ class NewPost extends Component {
     });
   }
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    // if(this.state.file[0]) {
-    //   const image = e.target.file[0];
-    if(this.state.file) {
-      this.handleUpload(this.state.file);
-    }   
-    // }
-    this.props.createBlog(this.state);
-    
+  componentDidMount() {
+    this.props.getData();
   }
 
-  handleUpload = (blogImage) => {
-    this.props.uploadImage(blogImage);
-    // this.props.history.push('/');
+  handleSubmit = (e) => {
+    e.preventDefault();
+    if(this.state.file === null) {
+      alert("No image selected!");
+      return;
+    }   
+    //check if the image size is larger than 1MB
+    if(this.state.file.size > 1048576) {
+      alert("Image size must be less than 1MB!");
+      return;
+    }
+    // check it the file is an image
+    if(
+      this.state.file.type === "image/jpeg" ||
+      this.state.file.type === "image/png" ||
+      this.state.file.type === "image/jpg"
+    ) {
+    this.props.uploadImage(this.state.file);
+    } else {
+      alert("Please provide a valid image. (JPG, JPEG, PNG)");
+    }
+
+    this.props.createBlog(this.state);
   }
+
+  // handleUpload = (blogImage) => {
+    // this.props.history.push('/');
+  // }
 
   render() {
     const { auth, input } = this.props;
@@ -75,12 +97,14 @@ class NewPost extends Component {
             <label htmlFor="content">Blog Content</label>
             <textarea id="content" className="materialize-textarea" onChange={this.handleChange} required={true} />
           </div>
+
           <div className="form-group-row">
             <label htmlFor="file" className="col-form-label">Upload an image for the header</label>
             <div className="col-sm-9">
-              <input className="form-control" type="file" id="file" onChange={this.handleChange} required={true} {...input} />
+              <input className="form-control" type="file" id="file" ref={this.fileInputRef} onChange={e => this.fileChange(e)} required={true} {...input} />
             </div>
           </div>
+
           <div className="input-field">
             <button className="btn pink lighten-1 z-depth-0">Post</button>
           </div>
@@ -101,7 +125,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     createBlog: (blog) => dispatch(createBlog(blog)),
-    uploadImage: (blogImage) => dispatch(uploadImage(blogImage)) 
+    uploadImage: (blogImage) => dispatch(uploadImage(blogImage)),
+    getData
   }
 }
 
