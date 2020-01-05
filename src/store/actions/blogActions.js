@@ -1,5 +1,6 @@
 import { storage } from '../../config/fbConfig';
 import { database } from 'firebase';
+import FileUploader from "react-firebase-file-uploader";
 
 export const createBlog = (blog) => {
   return (dispatch, getState, { getFirebase, getFirestore }) => {
@@ -9,7 +10,7 @@ export const createBlog = (blog) => {
     const profile = getState().firebase.profile;
     const authorId = getState().firebase.auth.uid;
     const snippet = blog.content.substr(0,149);
-    // const headerImg = blog.files;
+    const headerImg = blog.files;
     firestore.collection('blogs').add({
       ...blog,
       authorFirstName: profile.firstName,
@@ -17,13 +18,16 @@ export const createBlog = (blog) => {
       authorId: authorId,
       createdAt: new Date(),
       snippet: snippet,
-      // headerImg: headerImg
+      headerImg: headerImg
     })
-    // .then(() => {
-      // storage.child(`profile/${new Date().getTime()}`).put(headerImg).then((snapshot) => {
-      //   console.log("Uploaded a file!")
-      // })
-    // })
+    .then((headerImg) => {
+      storage.ref('images')
+        .child(headerImg)
+        .getDownloadURL()
+        .then((url) => {
+          dispatch ({ type: 'UPLOAD_IMAGE', url });
+        });
+      })
     .then(() => {
       dispatch({ type: 'CREATE_BLOG', blog });
     }).catch((err) => {

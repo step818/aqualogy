@@ -4,20 +4,19 @@ import { createBlog } from '../../store/actions/blogActions';
 import { uploadImage } from '../../store/actions/imageActions';
 import { Redirect } from 'react-router-dom';
 
+import FileUploader from "react-firebase-file-uploader";
 import PreviewPicture from './PreviewPicture';
 
 class NewPost extends Component {
-  constructor(state) {
-    super(state);
-    this.state = {
-      picture: null,
-      pictureUrl: null
-    }
-  }
-  state = {
-    title: '',
-    content: ''
-  }
+  // constructor(state) {
+  //   super(state);
+  //   this.state = {
+  //     picture: null,
+  //     pictureUrl: null,
+  //     title: '',
+  //     content: ''
+  //   }
+  // }
 
   handleImageSelect = (e) => {
       let reader = new FileReader();
@@ -76,17 +75,17 @@ class NewPost extends Component {
             <label htmlFor="content">Blog Content</label>
             <textarea id="content" className="materialize-textarea" onChange={this.handleChange} required={true} />
           </div>
-          {/* <div className="form-group-row">
+          <div className="form-group-row">
             <label htmlFor="files" className="col-form-label">Upload an image for the header</label>
             <div className="col-sm-9">
-              <input className="form-control" type="file" id="files" onChange={this.handleImageSelect} required={true} {...input} />
+              <input className="form-control" type="file" id="files" onChange={this.handleChange} required={true} {...input} />
             </div>
-          </div> */}
+          </div>
           <div className="input-field">
             <button className="btn pink lighten-1 z-depth-0">Post</button>
           </div>
         </form>
-        <PreviewPicture pictureUrl={this.state.pictureUrl} />
+        {/* <PreviewPicture pictureUrl={this.state.pictureUrl} /> */}
       </div>
     );
   }
