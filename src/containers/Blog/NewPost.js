@@ -8,15 +8,17 @@ import FileUploader from "react-firebase-file-uploader";
 import PreviewPicture from './PreviewPicture';
 
 class NewPost extends Component {
-  // constructor(state) {
-  //   super(state);
-  //   this.state = {
-  //     picture: null,
-  //     pictureUrl: null,
-  //     title: '',
-  //     content: ''
-  //   }
-  // }
+  constructor() {
+    super();
+    this.state = {
+      error: null,
+      percent: 0,
+      showProgress: null,
+      image: null,
+      title: '',
+      content: ''
+    }
+  }
 
   //create ref
   fileInputRef = React.createRef();
@@ -38,6 +40,23 @@ class NewPost extends Component {
         imageObject.src = localImageUrl;
       }
     };
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (nextProps.showProgress !== prevState.showProgress) {
+      return { showProgress: nextProps.showProgress };
+    }
+    if (nextProps.image !== prevState.image) {
+      return { image: nextProps.image };
+    }
+    if (nextProps.percent !== prevState.percent) {
+      return { percent: nextProps.percent };
+    }
+    if (nextProps.error !== prevState.error) {
+      return { error: nextProps.error };
+    } else {
+      return null;
+    }
+  }
 
   handleChange = (e) => {
     this.setState({
@@ -79,10 +98,19 @@ class NewPost extends Component {
   // }
 
   render() {
+    const { image, percent, showProgress } = this.state;
     const { auth, input } = this.props;
 // Protect routes from unauthorized users
     if (!auth.uid) {
       return( <Redirect to={"/"} /> );
+    }
+
+    if (image) {
+      return (
+        <div>
+          hello
+        </div>
+      )
     }
     
     return (
@@ -126,7 +154,7 @@ const mapDispatchToProps = (dispatch) => {
   return {
     createBlog: (blog) => dispatch(createBlog(blog)),
     uploadImage: (blogImage) => dispatch(uploadImage(blogImage)),
-    getData
+    getData: () => dispatch(getData())
   }
 }
 

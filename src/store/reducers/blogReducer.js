@@ -1,4 +1,3 @@
-import FileUploader from "react-firebase-file-uploader";
 const initState = {
   blogs: "",
   avatarURL: null,

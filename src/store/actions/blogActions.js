@@ -10,15 +10,13 @@ export const createBlog = (blog) => {
     const profile = getState().firebase.profile;
     const authorId = getState().firebase.auth.uid;
     const snippet = blog.content.substr(0,149);
-    const headerImg = blog.file;
     firestore.collection('blogs').add({
       ...blog,
       authorFirstName: profile.firstName,
       authorLastName: profile.lastName,
       authorId: authorId,
       createdAt: new Date(),
-      snippet: snippet,
-      headerImg: headerImg
+      snippet: snippet
     })
     // .then((headerImg) => {
     //   storage.ref('images')

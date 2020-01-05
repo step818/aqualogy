@@ -30,12 +30,14 @@ const imageReducer = (state = initState, action) => {
         showProgress: false
       };
     case 'UPLOADING':
+      console.log('uploading...');
       return {
         ...state,
         percent: action.payload,
         showProgress: true
       };
     case 'GET_DATA' :
+      console.log('getting file data');
       return {
         ...state,
         image: action.payload
