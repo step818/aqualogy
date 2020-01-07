@@ -10,28 +10,50 @@ class Notifications extends React.Component {
     if (!this.props.auth.uid) {
       return ( <Redirect to={"/"} /> );
     }
+
+    let  notifika = null;
+    if (this.props.notifications) {
+      notifika = <ul>
+      {this.props.notifications && this.props.notifications.map(notif => {
+        return (
+          <li className="card cyan lighten-5" key={notif.id}>
+            <span className="pink-text">{notif.user} </span>
+            <span>{notif.content}</span>
+            <span>Schedule: {notif.schedule}</span>
+            <span>Contact info: Email: {notif.email}, Phone Number: {notif.phoneNumber}</span>
+            <span>Description: {notif.description}</span>
+            <div className="grey-text note-date">
+              {moment(notif.time.toDate()).fromNow()}
+            </div>
+          </li>
+        )
+      
+      })}
+    </ul>
+    } else {
+      notifika = <ul>
+      {this.props.notifications && this.props.notifications.map(notif => {
+        return (
+          <li className="card cyan lighten-5" key={notif.id}>
+            <span className="pink-text">{notif.user} </span>
+            <span>{notif.content}</span>
+            <div className="grey-text note-date">
+              {moment(notif.time.toDate()).fromNow()}
+            </div>
+          </li>
+        )
+      
+      })}
+    </ul>
+    }
+          
+  
     return (
       <div className="section">
         <div className="card z-depth-0">
           <div className="card-content">
             <span className="card-title">Notifications</span>
-            <ul>
-              {this.props.notifications && this.props.notifications.map(notif => {
-                return (
-                  <li key={notif.id}>
-                    <span className="pink-text">{notif.user} </span>
-                    <span>{notif.content}</span>
-                    <span>Schedule: {notif.schedule}</span>
-                    <span>Contact info: Email: {notif.email}, Phone Number: {notif.phoneNumber}</span>
-                    <span>Description: {notif.description}</span>
-                    <div className="grey-text note-date">
-                      {moment(notif.time.toDate()).fromNow()}
-                    </div>
-                  </li>
-                )
-              
-              })}
-            </ul>
+              {notifika}
           </div>
         </div>
       </div>
