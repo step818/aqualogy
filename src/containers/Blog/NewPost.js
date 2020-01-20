@@ -115,12 +115,12 @@ class NewPost extends Component {
             <textarea id="content" className="materialize-textarea" onChange={this.handleChange} required={true} />
           </div>
 
-          <div className="form-group-row">
+          {/* <div className="form-group-row">
             <label htmlFor="file" className="col-form-label">Upload an image for the header</label>
             <div className="col-sm-9">
               <input className="form-control" type="file" id="file" onChange={this.handleChange} required={true} />
             </div>
-          </div>
+          </div> */}
 
           <div className="input-field">
             <button className="btn pink lighten-1 z-depth-0">Post</button>
