@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { createAppt } from '../../store/actions/apptActions';
 import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
+import moment from 'moment';
 
 // import classes from './Book.module.css';
 // import Calendar from './Calendar/Calendar';
@@ -61,8 +62,8 @@ class Book extends Component {
           {this.props.appointments && this.props.appointments.map(appt => {
             return (
               <li key={appt.id}>
-                <span>{appt.date}</span>
-                <span>{appt.time}</span>
+                <span>{moment(appt.date).format("MMM-DD-YYYY")}</span>
+                <span>{" "+ appt.time}</span>
               </li>
             )
           })}
