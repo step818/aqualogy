@@ -17,43 +17,6 @@ class NewPost extends Component {
   //   }
   // }
 
-  // //create ref
-  // fileInputRef = React.createRef();
-
-
-  // fileChange = (e) => {
-  //     e.preventDefault();
-  //     this.setState({ file: e.target.files[0]})
-  //     let imageFile = e.target.files[0];
-
-  //     if (imageFile) {
-  //       const localImageUrl = URL.createObjectURL(imageFile);
-  //       const imageObject = new window.Image();
-  //       imageObject.onload = () => {
-  //         imageFile.width = imageObject.naturalWidth;
-  //         imageFile.height = imageObject.naturalHeight;
-  //         URL.revokeObjectURL(imageFile);
-  //       };
-  //       imageObject.src = localImageUrl;
-  //     }
-  //   };
-
-  // static getDerivedStateFromProps(nextProps, prevState) {
-  //   if (nextProps.showProgress !== prevState.showProgress) {
-  //     return { showProgress: nextProps.showProgress };
-  //   }
-  //   if (nextProps.image !== prevState.image) {
-  //     return { image: nextProps.image };
-  //   }
-  //   if (nextProps.percent !== prevState.percent) {
-  //     return { percent: nextProps.percent };
-  //   }
-  //   if (nextProps.error !== prevState.error) {
-  //     return { error: nextProps.error };
-  //   } else {
-  //     return null;
-  //   }
-  // }
 
   handleChange = (e) => {
     this.setState({
@@ -61,38 +24,12 @@ class NewPost extends Component {
     });
   }
 
-  // componentDidMount() {
-  //   this.props.getData();
-  // }
 
   handleSubmit = (e) => {
     e.preventDefault();
-    // if(this.state.file === null) {
-    //   alert("No image selected!");
-    //   return;
-    // }   
-    // //check if the image size is larger than 1MB
-    // if(this.state.file.size > 1048576) {
-    //   alert("Image size must be less than 1MB!");
-    //   return;
-    // }
-    // // check it the file is an image
-    // if(
-    //   this.state.file.type === "image/jpeg" ||
-    //   this.state.file.type === "image/png" ||
-    //   this.state.file.type === "image/jpg"
-    // ) {
-    // this.props.uploadImage(this.state.file);
-    // } else {
-    //   alert("Please provide a valid image. (JPG, JPEG, PNG)");
-    // }
-
     this.props.createBlog(this.state);
+    this.props.history.push('/');
   }
-
-  // handleUpload = (blogImage) => {
-    // this.props.history.push('/');
-  // }
 
   render() {
     // const { image, percent, showProgress } = this.state;

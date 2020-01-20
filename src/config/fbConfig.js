@@ -4,17 +4,6 @@ import 'firebase/auth';
 import 'firebase/functions';
 import 'firebase/storage';
 
-
-
-// const firebaseConfig = {
-//   apiKey: "AIzaSyC557LULkrM1gUvqiuw826lCXVQBgID6gg",
-//   authDomain: "aqualogy-f1531.firebaseapp.com",
-//   databaseURL: "https://aqualogy-f1531.firebaseio.com",
-//   projectId: "aqualogy-f1531",
-//   storageBucket: "aqualogy-f1531.appspot.com",
-//   messagingSenderId: "941784986270",
-//   appId: "1:941784986270:web:8112071cb40c308632818f"
-// };
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_KEY,
   authDomain: process.env.REACT_APP_FIREBASE_DOMAIN,

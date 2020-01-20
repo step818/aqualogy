@@ -22,7 +22,10 @@ class PostForum extends Component {
     this.props.createForum(this.state);
     // window.location.reload()
     // const { router } = this.props;    
-    // this.props.history.push('/');
+    // this.props.history.push('/forum');
+    // this.setState({
+      
+    // })
   }
 
   render() {

@@ -10,7 +10,7 @@ const LoggedInLinks = (props) => {
   const { auth } = props;
   const { profile } = props;
 
-  const admin = auth.uid ===  "F0coC7iTj6Qo0ZX3pqt8npR5oTS2" ? <div>
+  const admin = auth.uid ===  "GqA8GX2euyRm5MRS76VUrgUVrQF2" ? <div>
   <li><NavigationItem link="/newpost">Create Post</NavigationItem></li>
   <li><NavigationItem link="/notifications">Notifications</NavigationItem></li></div> : null
 
@@ -24,7 +24,6 @@ const LoggedInLinks = (props) => {
   )};
 
 const mapStateToProps = (state) => {
-  console.log(state);
   return {
     auth: state.firebase.auth,
     profile: state.firebase.profile
