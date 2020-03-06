@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
+import classes from './BlogPage.module.css';
 
 import BlogList from '../Blog/BlogList';
 import { Jumbotron } from 'react-bootstrap';
@@ -17,7 +18,7 @@ class BlogPage extends Component {
     return(
       <div>
         <Jumbotron style={{ backgroundImage: `url(${jumboBG}`, backgroundSize: 'cover', fontFamily: 'Courgette', color: 'lavender' }}>
-          <h1>Blogs</h1>
+          <h1 className={classes.Header}>Blogs</h1>
         </Jumbotron>
         <div className="dashboard container">
           <div className="row">

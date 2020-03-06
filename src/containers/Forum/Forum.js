@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
+import classes from './Forum.module.css';
 
 import PostForum from './PostForum';
 import ForumList from './ForumList';
@@ -18,7 +19,7 @@ class Forum extends Component {
     return(
       <div>
         <Jumbotron style={{ backgroundImage: `url(${jumboBG}`, backgroundSize: 'cover', fontFamily: 'Courgette', color: 'lavender' }}>
-          <h1>Forums</h1>
+          <h1 className={classes.Header}>Forums</h1>
         </Jumbotron>
         <div className="dashboard container">
           <div className="row">

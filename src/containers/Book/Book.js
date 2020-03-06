@@ -4,6 +4,10 @@ import { createAppt } from '../../store/actions/apptActions';
 import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import moment from 'moment';
+import classes from './Book.module.css';
+
+import { Jumbotron } from 'react-bootstrap';
+import jumboBG from '../../assets/img/jumboBG.jpg'
 
 // import classes from './Book.module.css';
 // import Calendar from './Calendar/Calendar';
@@ -38,7 +42,10 @@ class Book extends Component {
     const { auth } = this.props;
     const { appointments } = this.props;
     return (
-      <div className="container">
+      <div>
+        <Jumbotron style={{ backgroundImage: `url(${jumboBG}`, backgroundSize: 'cover', fontFamily: 'Courgette', color: 'lavender' }}>
+          <h1 className={classes.Header}>Book Appt.</h1>
+        </Jumbotron>
         <form onSubmit={this.handleSubmit} className="white">
           <h5 className="grey-text text-darken-3">Schedule a session</h5>
           <div className="input-field">

@@ -6,6 +6,7 @@ import { compose } from 'redux';
 
 import BlogList from '../Blog/BlogList';
 import { Jumbotron } from 'react-bootstrap';
+import classes from './Home.module.css';
 
 import jumboBG from '../../assets/img/jumboBG.jpg';
 
@@ -17,7 +18,7 @@ class Home extends Component {
     return(
       <div>
         <Jumbotron style={{ backgroundImage: `url(${jumboBG}`, backgroundSize: 'cover', fontFamily: 'Courgette', color: 'lavender' }}>
-          <h1>Aqualogy</h1>
+          <h1 className={classes.Header}>Aqualogy</h1>
         </Jumbotron>
         <div className="dashboard container">
           <div className="row">
@@ -32,7 +33,7 @@ class Home extends Component {
 }
 
 const mapStateToProps = (state) => {
-  // console.log(state);
+  console.log(state);
   return {
     blogs: state.firestore.ordered.blogs
   }
