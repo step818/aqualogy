@@ -5,7 +5,7 @@ import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import classes from './BlogPage.module.css';
 
-import BlogList from '../Blog/BlogList';
+import BlogList from './BlogList';
 import { Jumbotron } from 'react-bootstrap';
 
 import jumboBG from '../../assets/img/jumboBG.jpg';
