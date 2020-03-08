@@ -6,3 +6,15 @@
     transform:scale(2,2); /* W3C */
     text-shadow: 8px 1px 4px midnightblue;
 }
+
+.input-field {
+  width:50%;
+}
+
+.when {
+  margin-bottom:30px;
+}
+
+.formBounds {
+  width: 50%;
+}

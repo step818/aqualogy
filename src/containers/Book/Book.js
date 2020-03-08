@@ -46,6 +46,7 @@ class Book extends Component {
         <Jumbotron style={{ backgroundImage: `url(${jumboBG}`, backgroundSize: 'cover', fontFamily: 'Courgette', color: 'lavender' }}>
           <h1 className={classes.Header}>Book Appt.</h1>
         </Jumbotron>
+        <div className={classes.formBounds}>
         <form onSubmit={this.handleSubmit} className="white">
           <h5 className="grey-text text-darken-3">Schedule a session</h5>
           <div className="input-field">
@@ -57,7 +58,7 @@ class Book extends Component {
             <input id="phoneNumber" className="materialize-textarea" onChange={this.handleChange} />
           </div>
           <div className="input-field">
-            <label htmlFor="email">{auth.email}</label>
+            <label htmlFor="email">Email</label>
             <input type="email" id="email" onChange={this.handleChange} />
           </div>
           {/* <div>
@@ -75,22 +76,23 @@ class Book extends Component {
             )
           })}
           </ul>
-          <div className="input-field">
-            <label htmlFor="date">When</label>
-            <input type="date" id="date" onChange={this.handleChange} />
-          </div>
-          <div className="input-field">
-            <label htmlFor="time">Time</label>
-            <input type="time" id="time" onChange={this.handleChange} />
-          </div>
-          <div className="input-field">
-            <label htmlFor="description">Description</label>
-            <textarea id="description" className="textarea" onChange={this.handleChange} />
-          </div>
-          <div className="input-field">
-            <button className="btn pink lighten-1 z-depth-2">Book</button>
-          </div>
+            <div className="input-field">
+              <label className="when" htmlFor="date">When</label>
+              <input type="date" id="date" onChange={this.handleChange} />
+            </div>
+            <div className="input-field">
+              <label htmlFor="time">Time</label>
+              <input type="time" id="time" onChange={this.handleChange} />
+            </div>
+            <div className="input-field">
+              <label htmlFor="description">Description</label>
+              <textarea id="description" className="textarea" onChange={this.handleChange} />
+            </div>
+            <div className="input-field">
+              <button className="btn pink lighten-1 z-depth-2">Book</button>
+            </div>
         </form>
+        </div>
       </div>
     );
   }
