@@ -8,5 +8,12 @@
 }
 
 .Summary {
-  
+  margin: auto;
+  padding: 20px;
+  background-color: lavender;
+  font-family: 'Courgette';
+  width: 75%;
+  border: 2px solid fuchsia;
+  border-radius: 15px;
+  box-shadow: 2px 2px 8px midnightblue;
 }

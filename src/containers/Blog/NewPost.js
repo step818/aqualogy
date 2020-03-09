@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { createBlog } from '../../store/actions/blogActions';
 import { uploadImage, getData } from '../../store/actions/imageActions';
 import { Redirect } from 'react-router-dom';
+import classes from './NewPost.module.css';
 
 class NewPost extends Component {
   // constructor() {
@@ -40,7 +41,7 @@ class NewPost extends Component {
     }
     
     return (
-      <div className="container">
+      <div className={classes.formBounds}>
         <form onSubmit={this.handleSubmit} className="white">
           <h5 className="grey-text text-darken-3">Create New Post</h5>
           <div className="input-field">
@@ -51,6 +52,10 @@ class NewPost extends Component {
             <label htmlFor="content">Blog Content</label>
             <textarea id="content" className="materialize-textarea" onChange={this.handleChange} required={true} />
           </div>
+
+          {/*  *******The code for the img upload form input from -'ng-instructables'-           
+          <img [src]="imageSrc" style="max-width:300px;max-height:300px"/>
+  <input name="imageUrl" type="file" accept="image/*" (change)="handleInputChange($event)" /> */}
 
           {/* <div className="form-group-row">
             <label htmlFor="file" className="col-form-label">Upload an image for the header</label>

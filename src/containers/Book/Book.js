@@ -46,8 +46,7 @@ class Book extends Component {
         <Jumbotron style={{ backgroundImage: `url(${jumboBG}`, backgroundSize: 'cover', fontFamily: 'Courgette', color: 'lavender' }}>
           <h1 className={classes.Header}>Book Appt.</h1>
         </Jumbotron>
-        <div className={classes.formBounds}>
-        <form onSubmit={this.handleSubmit} className="white">
+        <form onSubmit={this.handleSubmit} className={classes.formBounds}>
           <h5 className="grey-text text-darken-3">Schedule a session</h5>
           <div className="input-field">
             <label htmlFor="name">Name</label>
@@ -92,7 +91,6 @@ class Book extends Component {
               <button className="btn pink lighten-1 z-depth-2">Book</button>
             </div>
         </form>
-        </div>
       </div>
     );
   }
