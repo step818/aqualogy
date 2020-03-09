@@ -1,6 +1,17 @@
 .formBounds {
   width: 75%;
   margin: auto;
+  margin-top: 150px;
   border: solid 2px cadetblue;
   box-shadow: 2px 2px 8px midnightblue;
+  font-family: 'Courgette';
+}
+
+.displayName {
+  margin-left: -600px;
+}
+
+.dateInput {
+  display: inline-block;
+  margin-left: -600px;
 }

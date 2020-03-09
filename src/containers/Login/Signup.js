@@ -40,7 +40,7 @@ class Signup extends Component {
             <label htmlFor="password">Password</label>
             <input type="password" id="password" onChange={this.handleChange} />
           </div>
-          <div className="input-field">
+          <div className={classes.displayName}>
             <label htmlFor="displayName">Display Name</label>
             <input type="displayName" id="displayName" onChange={this.handleChange} />
           </div>
@@ -52,12 +52,12 @@ class Signup extends Component {
             <label htmlFor="lastName">Last Name</label>
             <input type="text" id="lastName" onChange={this.handleChange} required/>
           </div>
-          <div className="input-field">
+          <div className={classes.dateInput}>
             <label htmlFor="DOB">Birth Date</label>
             <input type="date" id="DOB" onChange={this.handleChange} required/>
           </div>
           <div className="input-field">
-            <button className="btn pink lighten-1 z-depth-0">Sign up</button>
+            <button className="btn pink lighten-1 z-depth-3">Sign up</button>
             <div className="red-text center">
               { authError ? <p>{ authError }</p> : null }
             </div>

@@ -64,32 +64,36 @@ class Book extends Component {
             <Calendar style={style} width="302px"
               onDayClick={(e, day)=> this.onDayClick(e, day)}  />
           </div> */}
-          <p>The below dates and times are unvailable time slots</p>
-          <ul>
-          {this.props.appointments && this.props.appointments.map(appt => {
-            return (
-              <li key={appt.id}>
-                <span>{moment(appt.date).format("MMM-DD-YYYY")}</span>
-                <span>{" "+ appt.time}</span>
-              </li>
-            )
-          })}
-          </ul>
-            <div className="input-field">
-              <label className="when" htmlFor="date">When</label>
-              <input type="date" id="date" onChange={this.handleChange} />
-            </div>
-            <div className="input-field">
-              <label htmlFor="time">Time</label>
-              <input type="time" id="time" onChange={this.handleChange} />
-            </div>
-            <div className="input-field">
-              <label htmlFor="description">Description</label>
-              <textarea id="description" className="textarea" onChange={this.handleChange} />
-            </div>
-            <div className="input-field">
-              <button className="btn pink lighten-1 z-depth-2">Book</button>
-            </div>
+          <div className={classes.TimeSlotsTitle}>
+            <p>The below dates and times are unvailable time slots</p>
+          </div>
+          <div className={classes.TimeSlots}>
+            <ul>
+              {this.props.appointments && this.props.appointments.map(appt => {
+                return (
+                  <li key={appt.id}>
+                    <span>{moment(appt.date).format("MMM-DD-YYYY")}</span>
+                    <span>{" "+ appt.time}</span>
+                  </li>
+                )
+              })}
+            </ul>
+          </div>
+          <div className="input-field">
+            <label className="when" htmlFor="date">When</label>
+            <input type="date" id="date" onChange={this.handleChange} />
+          </div>
+          <div className="input-field">
+            <label htmlFor="time">Time</label>
+            <input type="time" id="time" onChange={this.handleChange} />
+          </div>
+          <div className="input-field">
+            <label htmlFor="description">Description</label>
+            <textarea id="description" className="textarea" onChange={this.handleChange} />
+          </div>
+          <div className="input-field">
+            <button className="btn pink lighten-1 z-depth-2">Book</button>
+          </div>
         </form>
       </div>
     );
