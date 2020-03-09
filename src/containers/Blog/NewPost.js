@@ -1,23 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createBlog } from '../../store/actions/blogActions';
-import { uploadImage, getData } from '../../store/actions/imageActions';
 import { Redirect } from 'react-router-dom';
 import classes from './NewPost.module.css';
 
 class NewPost extends Component {
-  // constructor() {
-  //   super();
-  //   this.state = {
-  //     error: null,
-  //     percent: 0,
-  //     showProgress: null,
-  //     image: null,
-  //     title: '',
-  //     content: ''
-  //   }
-  // }
-
 
   handleChange = (e) => {
     this.setState({
@@ -33,7 +20,6 @@ class NewPost extends Component {
   }
 
   render() {
-    // const { image, percent, showProgress } = this.state;
     const { auth, input } = this.props;
 // Protect routes from unauthorized users
     if (!auth.uid) {
@@ -83,9 +69,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    createBlog: (blog) => dispatch(createBlog(blog)),
-    uploadImage: (blogImage) => dispatch(uploadImage(blogImage)),
-    getData: () => dispatch(getData())
+    createBlog: (blog) => dispatch(createBlog(blog))
   }
 }
 

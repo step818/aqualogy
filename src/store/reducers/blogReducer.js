@@ -1,6 +1,5 @@
 const initState = {
   blogs: "",
-  avatarURL: null,
 }
 
 const blogReducer = (state = initState, action) => {

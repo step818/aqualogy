@@ -11,7 +11,6 @@ import * as serviceWorker from './serviceWorker';
 import authReducer from './store/reducers/authReducer';
 import blogReducer from './store/reducers/blogReducer';
 import apptReducer from './store/reducers/apptReducer';
-import imageReducer from './store/reducers/imageReducer';
 import { firebaseReducer } from 'react-redux-firebase';
 import { firestoreReducer } from 'redux-firestore';
 
@@ -27,7 +26,6 @@ const rootReducer = combineReducers({
     auth: authReducer,
     blog: blogReducer,
     appt: apptReducer,
-    images: imageReducer,
     firebase: firebaseReducer,
     firestore: firestoreReducer
 });

@@ -2,16 +2,18 @@ import React, { Component } from 'react';
 import { Jumbotron } from 'react-bootstrap';
 import classes from './About.module.css';
 import jumboBG from '../../assets/img/jumboBG.jpg';
+import homepage from '../../assets/img/homepage.jpeg'
 
 class About extends Component {
   render() {
     return (
       <div>
-        <Jumbotron style={{ backgroundImage: `url(${jumboBG}`, backgroundSize: 'cover', fontFamily: 'Courgette', color: 'lavender' }}>
+        <Jumbotron style={{ backgroundImage: `url(${jumboBG})`, backgroundSize: 'cover', fontFamily: 'Courgette', color: 'lavender' }}>
           <h1 className={classes.Header}>About me</h1>
         </Jumbotron>
         <div className={classes.Summary}>
-          <h2><strong>Our Astrologers</strong></h2>
+          <div className={classes.Picture1} style={{backgroundImage: `url(${homepage})`, height: '400px', width: '400px', float: 'right' }}></div>
+          <h1><strong>Who are these stellar astrologers?</strong></h1>
           <p>I'm baby health goth hella subway tile chillwave, yr leggings farm-to-table tbh. Wayfarers vinyl viral semiotics af. Pickled af raw denim woke, fashion axe franzen distillery tbh marfa waistcoat synth semiotics occupy try-hard meditation. Cold-pressed bicycle rights jean shorts affogato organic, bespoke iceland cardigan disrupt selvage. +1 kitsch seitan paleo pork belly, fam fixie quinoa asymmetrical scenester biodiesel roof party.</p>
 
           <p>Literally keytar seitan authentic subway tile YOLO. Distillery godard kickstarter schlitz sartorial hoodie microdosing blog cold-pressed VHS. Gentrify sriracha poke adaptogen chia brooklyn occupy keffiyeh chambray squid. Semiotics street art enamel pin poke farm-to-table.</p>
