@@ -1,5 +1,7 @@
 import React from 'react';
 import moment from 'moment';
+// import ForumReplyPost from './ForumReplyPost';
+import ForumList from './ForumList';
 import { FacebookShareButton, EmailShareButton, RedditShareButton, FacebookIcon } from 'react-share';
 import { FacebookShareCount, RedditShareCount } from 'react-share';
 
@@ -16,6 +18,8 @@ const ForumDetails = ({forum}) => {
           <div>Posted by { forum.authorFirstName } {forum.authorLastName }</div>
         <div>Posted {moment(forum.createdAt.toDate()).calendar()}</div>
         <FacebookShareButton><FacebookIcon/></FacebookShareButton>
+        {/* <ForumReplyPost /> */}
+        {/* <ForumReplyList  /> */}
       </div>
     </div>
   </div>

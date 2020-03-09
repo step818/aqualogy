@@ -9,7 +9,6 @@ import classes from './Book.module.css';
 import { Jumbotron } from 'react-bootstrap';
 import jumboBG from '../../assets/img/jumboBG.jpg'
 
-// import classes from './Book.module.css';
 // import Calendar from './Calendar/Calendar';
 // import DatePicker from 'react-datepicker';
 // import Calendar from 'react-calendar';
@@ -30,8 +29,13 @@ class Book extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault();
+    // We call a confirmation. If 'confirmed', then continue, else break
     this.props.createAppt(this.state);
     this.props.history.push('/');
+  }
+
+  handleFirstClick = (e) => {
+    e.preventDefault();
   }
 
   onDayClick = (e, day) => {
@@ -41,6 +45,7 @@ class Book extends Component {
   render() {
     const { auth } = this.props;
     const { appointments } = this.props;
+    // let confirmationView = confirmationView ? the alert with buttons for true or false : null;
     return (
       <div>
         <Jumbotron style={{ backgroundImage: `url(${jumboBG}`, backgroundSize: 'cover', fontFamily: 'Courgette', color: 'lavender' }}>
@@ -95,6 +100,7 @@ class Book extends Component {
             <button className="btn pink lighten-1 z-depth-2">Book</button>
           </div>
         </form>
+        {/* {confirmationView} */}
       </div>
     );
   }

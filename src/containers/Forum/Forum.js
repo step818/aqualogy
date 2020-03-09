@@ -35,6 +35,7 @@ class Forum extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
     forums: state.firestore.ordered.forums
   }

@@ -9,7 +9,7 @@ export const createForum = (forum) => {
       authorFirstName: profile.firstName,
       authorLastName: profile.lastName,
       authorId: authorId,
-      createdAt: new Date()
+      createdAt: new Date(),
     }).then(() => {
       dispatch({ type: 'CREATE_FORUM', forum });
     }).catch((err) => {
