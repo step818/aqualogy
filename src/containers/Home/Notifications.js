@@ -15,18 +15,31 @@ class Notifications extends React.Component {
     if (this.props.notifications) {
       notifika = <ul>
       {this.props.notifications && this.props.notifications.map(notif => {
-        return (
-          <li className="card cyan lighten-5" key={notif.id}>
-            <span className="pink-text">{notif.user} </span>
-            <span>{notif.content}</span>
-            <span>Schedule: {notif.schedule}</span>
-            <span>Contact info: Email: {notif.email}, Phone Number: {notif.phoneNumber}</span>
-            <span>Description: {notif.description}</span>
-            <div className="grey-text note-date">
-              {moment(notif.time.toDate()).fromNow()}
-            </div>
-          </li>
-        )
+        if(notif.content=='Scheduled a new appointment') {
+          return (
+            <li className="card red lighten-5" key={notif.id}>
+              <span className="pink-text">{notif.user} </span>
+              <span>{notif.content}</span>
+              <span>Schedule: {notif.schedule}</span>
+              <span>Contact info: Email: {notif.email}, Phone Number: {notif.phoneNumber}</span>
+              <span>Description: {notif.description}</span>
+              <div className="grey-text note-date">
+                {moment(notif.time.toDate()).fromNow()}
+              </div>
+            </li>
+          )
+        } else  {
+          return (
+            <li className="card cyan lighten-5" key={notif.id}>
+              <span className="pink-text">{notif.user} </span>
+              <span>{notif.content}</span>
+              <div className="grey-text note-date">
+                {moment(notif.time.toDate()).fromNow()}
+              </div>
+            </li>
+          )
+        }
+        
       
       })}
     </ul>

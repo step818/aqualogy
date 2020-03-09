@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { signUp } from '../../store/actions/authActions';
+import classes from './Signup.module.css';
 
 class Signup extends Component {
   state = {
@@ -28,8 +29,8 @@ class Signup extends Component {
     if (auth.uid) return <Redirect to="/" />;
 
     return (
-      <div className="container">
-        <form onSubmit={this.handleSubmit} className="white">
+      <div>
+        <form onSubmit={this.handleSubmit} className={classes.formBounds}>
           <h5 className="grey-text text-darken-3">Sign up</h5>
           <div className="input-field">
             <label htmlFor="email">Email</label>
