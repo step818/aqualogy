@@ -12,7 +12,7 @@ const toolbar = (props) => {
     <header className={classes.Toolbar}>
       <nav className="card purple lighten-3">
         <div className="row right">
-          <NavigationItems/>
+          <NavigationItems auth={auth} />
           {auth.isLoaded && links}
         </div>
       </nav>
