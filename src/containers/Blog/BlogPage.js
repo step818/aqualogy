@@ -16,7 +16,7 @@ class BlogPage extends Component {
     const { blogs } = this.props;
 
     return(
-      <div>
+      <div className={classes.layout}>
         <Jumbotron style={{ backgroundImage: `url(${jumboBG}`, backgroundSize: 'cover', fontFamily: 'Courgette', color: 'lavender' }}>
           <h1 className={classes.Header}>Blogs</h1>
         </Jumbotron>
@@ -33,6 +33,7 @@ class BlogPage extends Component {
 }
 
 const mapStateToProps = (state) => {
+  console.log(state);
   return {
     blogs: state.firestore.ordered.blogs
   }

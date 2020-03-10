@@ -6,3 +6,9 @@
     transform:scale(2,2); /* W3C */
     text-shadow: 8px 1px 4px midnightblue;
 }
+
+.layout {
+  width: 100%;
+  border: solid 2px green;
+  height: 700px;
+}

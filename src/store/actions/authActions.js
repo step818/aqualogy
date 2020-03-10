@@ -35,7 +35,6 @@ export const signUp = (newUser) => {
       newUser.email,
       newUser.password
     ).then((resp) => {
-    console.log(newUser.DOB);
     let sign = null; 
     let zD = parseInt(newUser.DOB[5] + newUser.DOB[6] + newUser.DOB[8] + newUser.DOB[9]);
     if (zD >= 321 && zD <= 419) {
