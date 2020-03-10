@@ -35,9 +35,17 @@ class NewPost extends Component {
               <label htmlFor="title">Title</label>
               <input type="text" id="title" onChange={this.handleChange} required={true} />
             </div>
-            <div className="input-field">
+            <div>
               <label htmlFor="content">Write away...</label>
               <textarea id="content" className="materialize-textarea" onChange={this.handleChange} required={true} />
+            </div>
+            <div>
+              <label htmlFor="extra">This is extra</label>
+              <input type="text" id="extra" onChange={this.handleChange} />
+            </div>
+            <div>
+              <label htmlFor="image">Image</label>
+              <input id="image" name="image" type="file" onChange={this.handleChange}/>
             </div>
 
             {/*  *******The code for the img upload form input from -'ng-instructables'-           
