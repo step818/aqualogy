@@ -5,7 +5,8 @@ const like = (props) => (
     <button 
       onClick={props.clicked}
       className={[classes.Button, classes[props.btnType]].join(' ')}>
-        Like
+        <h2>Like</h2>
+        {props.children}
     </button>
 );
 

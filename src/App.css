@@ -1,6 +1,7 @@
 .App {
   text-align: center;
   background-image: url(/src/assets/img/homepage.jpeg);
+  background-color: #303030;
 }
 
 .App-header {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Jumbotron } from 'react-bootstrap';
 import classes from './About.module.css';
 import jumboBG from '../../assets/img/jumboBG.jpg';
-import homepage from '../../assets/img/homepage.jpeg'
+import profilePic from '../../assets/img/profilePic.jpg';
 
 class About extends Component {
   render() {
@@ -12,7 +12,7 @@ class About extends Component {
           <h1 className={classes.Header}>About me</h1>
         </Jumbotron>
         <div className={classes.Summary}>
-          <div className={classes.Picture1} style={{backgroundImage: `url(${homepage})`, height: '400px', width: '400px', float: 'right' }}></div>
+          <div className={classes.Picture1}></div>
           <h1><strong>Who are these stellar astrologers?</strong></h1>
           <p>I'm baby health goth hella subway tile chillwave, yr leggings farm-to-table tbh. Wayfarers vinyl viral semiotics af. Pickled af raw denim woke, fashion axe franzen distillery tbh marfa waistcoat synth semiotics occupy try-hard meditation. Cold-pressed bicycle rights jean shorts affogato organic, bespoke iceland cardigan disrupt selvage. +1 kitsch seitan paleo pork belly, fam fixie quinoa asymmetrical scenester biodiesel roof party.</p>
 
