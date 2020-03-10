@@ -35,6 +35,7 @@ export const signUp = (newUser) => {
       newUser.email,
       newUser.password
     ).then((resp) => {
+    console.log(newUser.DOB);
     let sign = null; 
     let zD = parseInt(newUser.DOB[5] + newUser.DOB[6] + newUser.DOB[8] + newUser.DOB[9]);
     if (zD >= 321 && zD <= 419) {
@@ -67,6 +68,12 @@ export const signUp = (newUser) => {
     else if (zD >= 1222 || zD <= 119) {
       sign = "Capricorn";
     }
+    else if (zD >= 120 && zD <= 218) {
+      sign = "Aquarius";
+    }
+    else if (zD >= 219 && zD <= 320) {
+      sign = "Pisces";
+    } 
 
       return firestore.collection('users').doc(resp.user.uid).set({
         firstName: newUser.firstName,

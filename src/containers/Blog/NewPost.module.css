@@ -1,8 +1,18 @@
+.layout {
+  width: 100%;
+  height: auto;
+  border: 2px solid green;
+  background-color: black;
+  text-align: center;
+  height: 100%;
+}
+
 .formBounds {
   width: 50%;
-  margin-top: 150px;
-  margin-left: 150px;
   border: 2px solid fuchsia;
   box-shadow: 2px 2px 7px midnightblue;
   border-radius: 15px;
+  font-family: 'Courgette';
+  background-color: gainsboro;
+  display: inline-block;
 }

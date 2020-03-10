@@ -22,7 +22,7 @@ class App extends Component{
 
   render() {
     return (
-          <div className="App" style={{backgroundColor: 'floralwhite', backgroundSize: '100%', backgroundRepeat: 'repeat' }}>
+          <div className="App">
           <Layout>
             <Switch>
               <Route path="/notifications" component={Notifications} />
