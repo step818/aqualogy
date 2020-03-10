@@ -7,7 +7,12 @@ import { Redirect } from 'react-router-dom';
 class PostForum extends Component {
   state = {
     title: '',
-    content: ''
+    content: '',
+    replies: {
+      id: null,
+      title: '',
+      content: ''
+    }
   }
 
   handleChange = (e) => {
@@ -20,12 +25,6 @@ class PostForum extends Component {
     e.preventDefault();
     console.log(this.props);
     this.props.createForum(this.state);
-    // window.location.reload()
-    // const { router } = this.props;    
-    // this.props.history.push('/forum');
-    // this.setState({
-      
-    // })
   }
 
   render() {

@@ -1,12 +1,12 @@
 import React from 'react';
 import moment from 'moment';
-import PostFmReply from './Reply/PostFmReply';
+// import PostFmReply from './Reply/PostFmReply';
 // import ForumReplyList from './Reply/ForumReplyList';
 import Like from '../../components/UI/Like';
 import { FacebookShareButton, EmailShareButton, RedditShareButton, FacebookIcon } from 'react-share';
 import { FacebookShareCount, RedditShareCount } from 'react-share';
 
-const ForumDetails = ({forum}) => {
+const ForumReplyDetails = ({forum}) => {
   // const id = props.match.params.id;
   const shareUrl = "http://localhost:3000/forum";
   return (
@@ -21,10 +21,6 @@ const ForumDetails = ({forum}) => {
         <div>Posted {moment(forum.createdAt.toDate()).calendar()}</div>
         <div>
           <Like /><p>{forum.likes}</p>
-          <FacebookShareButton><FacebookShareCount url={shareUrl}/><FacebookIcon size={32} round={true}/></FacebookShareButton>
-
-          <PostFmReply />
-          {/* <ForumReplyList  /> */}
         </div>
       </div>
     </div>
@@ -32,4 +28,4 @@ const ForumDetails = ({forum}) => {
   );
 }
 
-export default ForumDetails;
+export default ForumReplyDetails;

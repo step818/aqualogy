@@ -9,7 +9,8 @@ export const createForum = (forum) => {
       authorFirstName: profile.firstName,
       authorLastName: profile.lastName,
       authorId: authorId,
-      createdAt: new Date()
+      createdAt: new Date(),
+      replies: {}
     }).then(() => {
       dispatch({ type: 'CREATE_FORUM', forum });
     }).catch((err) => {
@@ -18,6 +19,25 @@ export const createForum = (forum) => {
     
   }
 };
+
+export const createForumReply = (forum) => {
+  return (dispatch, getState, {getFirebase, getFirestore}) => {
+    const firestore = getFirestore();
+    const profile = getState().firebase.profile;
+    const authorId = getState().firebase.auth.uid;
+    firestore.collection('forums').add({
+      ...forum,
+      replies: {
+        authorFirstName: profile.firstName,
+        authorLastName: profile.lastName,
+        createdAt: new Date(),
+        replies: {
+
+        }
+      }
+    })
+  }
+}
 
 export const addLike = (forum) => {
   return (dispatch, getState, {getFirebase, getFirestore }) => {

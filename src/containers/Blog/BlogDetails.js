@@ -4,6 +4,8 @@ import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import moment from 'moment';
 
+// import BlogComments from './BlogComments';
+
 const BlogDetails = (props) => {
   // console.log(props);
   const { blog } = props;
@@ -19,6 +21,7 @@ const BlogDetails = (props) => {
         <div className="card-action grey lighten-4 grey-text">
           <div>Posted by { blog.authorFirstName } {blog.authorLastName }</div>
           <div>Posted {moment(blog.createdAt.toDate()).calendar()}</div>
+          {/* <BlogComments /> */}
         </div>
       </div>
     </div>
