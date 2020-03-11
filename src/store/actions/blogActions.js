@@ -13,12 +13,35 @@ export const createBlog = (blog) => {
       authorId: authorId,
       createdAt: new Date(),
       snippet: snippet,
-      image: image
+      image: image,
+      comments: {}
     }).then(() => {
       dispatch({ type: 'CREATE_BLOG', blog });
     }).catch((err) => {
       dispatch({ type: 'CREATE_BLOG_ERROR', err });
     })
     
+  }
+};
+
+export const createComment = (blog) => {
+  return (dispatch, getState, {getFirebase, getFirestore}) => {
+    const firestore = getFirestore();
+    const profile = getState().firebase.profile;
+    const authorId = getState().firebase.auth.uid;
+    firestore.collection('blogs').add({
+      ...blog,
+      comment: {
+        authorFirstName: profile.firstName,
+        authorLastName: profile.lastName,
+        createdAt: new Date(),
+        content: { }
+      }
+    }).then(() => {
+      dispatch({ type: 'CREATE_COMMENT', blog });
+    }).catch((err) => {
+      dispatch({ type: 'CREATE_COMMENT_ERROR', err });
+    })
+
   }
 };

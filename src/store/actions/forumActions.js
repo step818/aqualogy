@@ -37,7 +37,7 @@ export const createForumReply = (forum) => {
       }
     })
   }
-}
+};
 
 export const addLike = (forum) => {
   return (dispatch, getState, {getFirebase, getFirestore }) => {
