@@ -4,6 +4,7 @@ import { createAppt } from '../../store/actions/apptActions';
 import { compose } from 'redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import moment from 'moment';
+// import { Redirect } from 'react-router-dom';
 import classes from './Book.module.css';
 
 import { Jumbotron } from 'react-bootstrap';
@@ -44,6 +45,15 @@ class Book extends Component {
 
   render() {
     const { auth } = this.props;
+    if (!auth.uid) {
+      return ( 
+        <div style={{ height: '1000px'}}>
+          <Jumbotron style={{ backgroundImage: `url(${jumboBG}`, backgroundSize: 'cover', fontFamily: 'Courgette', color: 'lavender' }}>
+            <h1 className={classes.Header}>Book Appt.</h1>
+          </Jumbotron>
+          <h1 className={classes.sorry}>Sorry, but you must sign in to do that.</h1>
+        </div> );
+    }
     const { appointments } = this.props;
     // let confirmationView = confirmationView ? the alert with buttons for true or false : null;
     return (

@@ -6,3 +6,9 @@
     transform:scale(2,2); /* W3C */
     text-shadow: 8px 1px 4px midnightblue;
 }
+
+.sorry {
+  color: azure;
+  font-family: 'Courgette';
+  margin-top: 150px;
+}

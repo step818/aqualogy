@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createForum } from '../../store/actions/forumActions';
-import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'react-router-dom';
 // import { withRouter } from 'react-router-dom';
 
 class PostForum extends Component {
@@ -28,12 +28,6 @@ class PostForum extends Component {
   }
 
   render() {
-    
-    const { auth } = this.props;
-// Protect routes from unauthorized users
-    if (!auth.uid) {
-      return( <Redirect to={"/"} /> );
-    }
     
     return (
       <div className="container">

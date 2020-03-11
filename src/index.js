@@ -8,7 +8,7 @@ import thunk from 'redux-thunk'
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-// import authReducer from './store/reducers/authReducer';
+import authReducer from './store/reducers/authReducer';
 // import blogReducer from './store/reducers/blogReducer';
 // import apptReducer from './store/reducers/apptReducer';
 import { firebaseReducer } from 'react-redux-firebase';
@@ -23,9 +23,9 @@ import 'firebase/firestore';
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
-    // auth: authReducer,
     // blog: blogReducer,
     // appt: apptReducer,
+    auth: authReducer,
     firebase: firebaseReducer,
     firestore: firestoreReducer
 });
