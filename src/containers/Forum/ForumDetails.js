@@ -3,8 +3,7 @@ import moment from 'moment';
 import PostFmReply from './Reply/PostFmReply';
 // import ForumReplyList from './Reply/ForumReplyList';
 import Like from '../../components/UI/Like';
-import { FacebookShareButton, EmailShareButton, RedditShareButton, FacebookIcon } from 'react-share';
-import { FacebookShareCount, RedditShareCount } from 'react-share';
+import { FacebookShareButton, EmailShareButton, RedditShareButton, LinkedinShareButton, FacebookIcon, EmailIcon, RedditIcon, LinkedinIcon, TwitterShareButton, TwitterIcon } from 'react-share';
 
 const ForumDetails = ({forum}) => {
   // const id = props.match.params.id;
@@ -21,8 +20,11 @@ const ForumDetails = ({forum}) => {
         <div>Posted {moment(forum.createdAt.toDate()).calendar()}</div>
         <div>
           <Like /><p>{forum.likes}</p>
-          <FacebookShareButton><FacebookShareCount url={shareUrl}/><FacebookIcon size={32} round={true}/></FacebookShareButton>
-
+          <FacebookShareButton url={shareUrl}><FacebookIcon size={32} round={true} style={{marginRight: '10px'}}/></FacebookShareButton>
+          <TwitterShareButton url={shareUrl}><TwitterIcon size={32} round={true} style={{marginRight: '10px'}}/></TwitterShareButton>
+          <LinkedinShareButton url={shareUrl}><LinkedinIcon size={32} round={true} style={{marginRight: '10px'}}/></LinkedinShareButton>
+          <RedditShareButton url={shareUrl}><RedditIcon size={32} round={true} style={{marginRight: '10px'}}/></RedditShareButton>
+          <EmailShareButton url={shareUrl}><EmailIcon size={32} round={true}/></EmailShareButton>
           <PostFmReply />
           {/* <ForumReplyList  /> */}
         </div>

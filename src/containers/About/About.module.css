@@ -32,3 +32,22 @@
   box-shadow: 4px 0px 7px darkmagenta;
   margin: 15px;
 }
+
+.Picture2 {
+  height: 370px;
+  width: 400px;
+  float: left;
+  background-image: url("../../assets/img/profilePic.jpg");
+  background-size: 500px 500px;
+  background-position-x: -100px;
+  background-repeat: no-repeat;
+  border: 4px solid darkorchid;
+  border-radius: 50px;
+  box-shadow: 4px 0px 7px darkmagenta;
+  margin: 15px;
+}
+
+.Title {
+  font-size: 50px;
+  text-shadow: 3px 3px 3px darkgray;
+}
