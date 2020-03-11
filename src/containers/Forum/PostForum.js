@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { createForum } from '../../store/actions/forumActions';
-// import { Redirect } from 'react-router-dom';
+// import { Redirect } from 'reakct-router-dom';
 // import { withRouter } from 'react-router-dom';
 
 class PostForum extends Component {
