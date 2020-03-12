@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
+import { RadioGroup, RadioButton, ReversedRadioButton } from 'react-radio-buttons';
 import { signUp } from '../../store/actions/authActions';
 import classes from './Signup.module.css';
 
@@ -29,7 +30,7 @@ class Signup extends Component {
     if (auth.uid) return <Redirect to="/" />;
 
     return (
-      <div>
+      <div style={{height: '1000px'}}>
         <form onSubmit={this.handleSubmit} className={classes.formBounds}>
           <h5 className="grey-text text-darken-3">Sign up</h5>
           <div className="input-field">
@@ -56,6 +57,19 @@ class Signup extends Component {
             <label htmlFor="DOB">Birth Date</label>
             <input type="date" id="DOB" onChange={this.handleChange} required/>
           </div>
+          <div class="form-group">
+            <label for="gender">Gender</label>
+            <select class="form-control" id="gender" required>
+              <option>Female</option>
+              <option>Male</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div className="input-field">
+            <label htmlFor="goal">What is your current main goal?</label>
+            <input type="text" id="goal" onChange={this.handleChange} required/>
+          </div>
+          {/* Email notifications here. Might have to create state for it. */}
           <div className="input-field">
             <button className="btn pink lighten-1 z-depth-3">Sign up</button>
             <div className="red-text center">
@@ -71,7 +85,7 @@ class Signup extends Component {
 const mapStateToProps = (state) => {
   return {
     auth: state.firebase.auth,
-    authError: state.auth.authError
+    authError: state.firebase.auth.authError
   }
 }
 
