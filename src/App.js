@@ -16,6 +16,7 @@ import Layout from './hoc/Layout/Layout';
 import NewPost from './containers/Blog/NewPost';
 import Notifications from './containers/Home/Notifications';
 import BlogPage from './containers/Blog/BlogPage';
+import Horoscope from './containers/Horoscope/Horoscope';
 
 class App extends Component{
 
@@ -25,6 +26,7 @@ class App extends Component{
           <div className="App">
           <Layout>
             <Switch>
+              <Route path="/horoscope" component={Horoscope} />
               <Route path="/notifications" component={Notifications} />
               <Route path="/newpost" component={NewPost} />
               <Route path="/login" component={Login} />

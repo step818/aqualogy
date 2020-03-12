@@ -16,6 +16,7 @@ const navigationItems = (props) => {
     <li><NavigationItem link="/blog">Blog</NavigationItem></li>
     <li><NavigationItem link="/book">Schedule Sessions</NavigationItem></li>
     <li><NavigationItem link="/forum">Forum</NavigationItem></li>
+    <li><NavigationItem link="/horoscope">Horoscopes</NavigationItem></li>
   </ul>
   )};
 
