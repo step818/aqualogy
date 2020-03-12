@@ -1,11 +1,12 @@
 export const createBlog = (blog) => {
+  console.log(blog);
   return (dispatch, getState, { getFirebase, getFirestore }) => {
     // make async call to database
     const firestore = getFirestore();
     const profile = getState().firebase.profile;
     const authorId = getState().firebase.auth.uid;
     const snippet = blog.content.substr(0,149);
-    const image = blog.image;
+    const bimage = blog.image.replace("C:\\fakepath\\", "");
     firestore.collection('blogs').add({
       ...blog,
       authorFirstName: profile.firstName,
@@ -13,7 +14,7 @@ export const createBlog = (blog) => {
       authorId: authorId,
       createdAt: new Date(),
       snippet: snippet,
-      image: image,
+      blogImage: bimage,
       comments: {}
     }).then(() => {
       dispatch({ type: 'CREATE_BLOG', blog });

@@ -7,9 +7,14 @@ import classes from './NewPost.module.css';
 class NewPost extends Component {
 
   handleChange = (e) => {
+    console.log(e.target);
     this.setState({
       [e.target.id]: e.target.value
     });
+  }
+
+  handleImageChange = (e) => {
+    console.log(e.target.files[0]);
   }
 
 

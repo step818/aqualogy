@@ -19,7 +19,8 @@ const BlogDetails = (props) => {
           <span className="card-title">{ blog.title }</span>
           <p>{ blog.content }</p>
         </div>
-        <p>{blog.image}</p>
+        <img src={blog.blogImage} alt="something cool" />
+        <p>{blog.blogImage}</p>
         <div className="card-action grey lighten-4 grey-text">
           <div>Posted by { blog.authorFirstName } {blog.authorLastName }</div>
           <div>Posted {moment(blog.createdAt.toDate()).calendar()}</div>
