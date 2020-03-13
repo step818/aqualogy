@@ -1,0 +1,13 @@
+.Notifications {
+  font-family: 'Courgette', 'sans-serif', 'arial';
+  width: 60%;
+  display: inline-block;
+  margin-top: 25px;
+}
+
+.Title {
+  color: honeydew;
+  font-size: 40px;
+  text-decoration: underline;
+  text-shadow: 2px 2px 4px lightsteelblue;
+}

@@ -73,7 +73,7 @@ export const signUp = (newUser) => {
     else if (zD >= 219 && zD <= 320) {
       sign = "Pisces";
     } 
-
+    console.log(newUser.displayName);
       return firestore.collection('users').doc(resp.user.uid).set({
         firstName: newUser.firstName,
         lastName: newUser.lastName,

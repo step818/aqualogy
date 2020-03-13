@@ -4,6 +4,7 @@ import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import {Redirect} from 'react-router-dom';
+import classes from './Notifications.module.css';
 
 class Notifications extends React.Component {
   render() {
@@ -15,7 +16,7 @@ class Notifications extends React.Component {
     if (this.props.notifications) {
       notifika = <ul>
       {this.props.notifications && this.props.notifications.map(notif => {
-        if(notif.content=='Scheduled a new appointment') {
+        if(notif.content==='Scheduled a new appointment') {
           return (
             <li className="card red lighten-5" key={notif.id}>
               <span className="pink-text">{notif.user} </span>
@@ -43,31 +44,29 @@ class Notifications extends React.Component {
       
       })}
     </ul>
-    } else {
-      notifika = <ul>
-      {this.props.notifications && this.props.notifications.map(notif => {
-        return (
-          <li className="card cyan lighten-5" key={notif.id}>
-            <span className="pink-text">{notif.user} </span>
-            <span>{notif.content}</span>
-            <div className="grey-text note-date">
-              {moment(notif.time.toDate()).fromNow()}
-            </div>
-          </li>
-        )
+    // } else {
+    //   notifika = <ul>
+    //   {this.props.notifications && this.props.notifications.map(notif => {
+    //     return (
+    //       <li className="card cyan lighten-5" key={notif.id}>
+    //         <span className="pink-text">{notif.user} </span>
+    //         <span>{notif.content}</span>
+    //         <div className="grey-text note-date">
+    //           {moment(notif.time.toDate()).fromNow()}
+    //         </div>
+    //       </li>
+    //     )
       
-      })}
-    </ul>
+    //   })}
+    // </ul>
     }
           
   
     return (
-      <div className="section">
-        <div className="card z-depth-0">
-          <div className="card-content">
-            <span className="card-title">Notifications</span>
-              {notifika}
-          </div>
+      <div className={classes.Notifications}>
+        <div className="card-content">
+          <span className={classes.Title}>Notifications</span><br/><br/>
+            {notifika}
         </div>
       </div>
     );
@@ -85,6 +84,6 @@ const mapStateToProps = (state) => {
 export default compose(
   connect(mapStateToProps),
   firestoreConnect([
-    {collection: 'notifications', limit: 5, orderBy: ['time', 'desc']}
+    {collection: 'notifications', limit: 10, orderBy: ['time', 'desc']}
   ])
 )(Notifications);
